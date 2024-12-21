@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logos/Blogo.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Navbar = () => {
+  const { user, handleLogout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const handleDropdown = () => {
     setIsOpen(!isOpen);
@@ -83,11 +85,24 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 *:*:bg-none">{menu}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
-        </div>
+        {user ? (
+          <div className="navbar-end">
+            <img
+              className="w-14 h-14 rounded-full border-2 border-accent"
+              src=""
+              alt=""
+            />
+            <button onClick={handleLogout} className="btn">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

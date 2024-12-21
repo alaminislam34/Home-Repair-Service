@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -17,7 +20,28 @@ const Register = () => {
   });
   const handleRegister = (e) => {
     const form = e;
+    const email = e.email;
+    const password = e.password;
     console.table(form);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "Success",
+          text: "Account Register Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Ops",
+          text: "Account Register Failed",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
     reset();
   };
   return (

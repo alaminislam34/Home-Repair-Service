@@ -1,18 +1,22 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Login = () => {
-  const handleLogin = (e) => {
+  const { handleLogin } = useContext(AuthContext);
+  const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
     console.table({ email, password });
+    handleLogin(email, password);
   };
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleLoginUser}
         className="flex flex-col gap-2 border m-4 p-4 md:p-6 shadow-xl  w-11/12 sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto"
       >
         <h2 className="my-2 md:my-4 text-center text-xl md:text-2xl lg:text-3xl font-semibold">
