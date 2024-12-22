@@ -41,7 +41,7 @@ const Home = () => {
                   alt=""
                 />
               </div>
-              <div>
+              <div className="p-4">
                 {/* service name */}
                 <h2>{service?.provider?.service.serviceName}</h2>
                 {/* service description */}

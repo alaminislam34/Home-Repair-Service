@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active {
-  background-color: red;
+.table :where(th, td) {
+  padding-left: 10px /* 16px */;
+  padding-right: 10px /* 16px */;
+  padding-top: 8px /* 12px */;
+  padding-bottom: 8px /* 12px */;
+  vertical-align: middle;
 }

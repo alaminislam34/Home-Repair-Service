@@ -1,14 +1,30 @@
-import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext/AuthProvider";
 import Swal from "sweetalert2";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../Firebase/firebase.config";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Login = () => {
-  const { handleLogin, handleSignUpWithGoogle } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location.state);
 
+  const handleSignUpWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        setUser(res.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch(() => {});
+  };
+  // handle login user
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,15 +32,24 @@ const Login = () => {
     const password = form.password.value;
 
     console.table({ email, password });
-    handleLogin(email, password);
-    navigate(location?.state ? location.state : "/");
-    form.reset();
-    Swal.fire({
-      title: "Success!",
-      text: "User Login successfully",
-      icon: "success",
-      confirmButtonText: "Ok",
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "Success!",
+          text: "User Logged Successfully",
+          icon: "success",
+        });
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Ops!",
+          text: "Your email or password incorrect",
+          icon: "error",
+        });
+      });
   };
 
   return (
@@ -62,10 +87,8 @@ const Login = () => {
         </p>
         <div className="flex justify-center items-center">
           <button
-            onClick={() => {
-              handleSignUpWithGoogle,
-                navigate(location?.state ? location.state : "/");
-            }}
+            type="button"
+            onClick={handleSignUpWithGoogle}
             className="btn"
           >
             Continue with google

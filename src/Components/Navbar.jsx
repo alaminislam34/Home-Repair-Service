@@ -1,6 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logos/Blogo.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
 import userImage from "../assets/logos/user.jpg";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
@@ -9,11 +9,48 @@ const Navbar = () => {
   const { user, handleLogout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [light, setLight] = useState(true);
+  const location = useLocation();
 
   // handle page theme mode
   const handleTheme = () => {
     setLight(!light);
   };
+
+  // set page title
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/":
+        document.title = "HomeRepairBD";
+        break;
+      case "/login":
+        document.title = "Login Page";
+        break;
+      case "/register":
+        document.title = "Register Page";
+        break;
+      case "/services":
+        document.title = "All Services";
+        break;
+      case "/addService":
+        document.title = "Add Service";
+        break;
+      // case "/favorite":
+      //   document.title = "Favorite Movies";
+      //   break;
+      // case `/viewDetails/`:
+      //   document.title = "Movie Details";
+      //   break;
+      // case `/updateMovie/`:
+      //   document.title = "Favorite Movies";
+      //   break;
+      // case `/resetPass`:
+      //   document.title = "Password Reset";
+      //   break;
+      // case `/trendingMovies`:
+      //   document.title = "Trending Movies";
+      //   break;
+    }
+  }, [location.pathname]);
 
   // handle dashboard dropdown
   const handleDropdown = () => {
@@ -27,13 +64,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/services">Services</NavLink>
       </li>{" "}
-      <button onClick={handleDropdown} className="relative z-40 border px-2">
+      <button
+        onClick={handleDropdown}
+        className="relative z-40 hover:bg-base-300 rounded-lg px-2"
+      >
         Dashboard
         {isOpen ? (
           <div
             className={`${
               isOpen ? "" : ""
-            } overflow-hidden bg-transparent/80 backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-1 w-44 bg-none hover:bg-none`}
+            } overflow-hidden  backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-1 w-44 bg-none hover:bg-none`}
           >
             <ul className="list-none m-0 bg-none">
               <li onClick={() => setIsOpen(!open)}>
@@ -58,10 +98,10 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 max-w-7xl mx-auto">
+      <div className="navbar bg-base-100 max-w-7xl mx-auto py-4">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -79,18 +119,20 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-4"
             >
               {menu}
             </ul>
           </div>
           <div className="flex flex-row gap-2 items-center">
-            <img className="w-16 h-16" src={logo} alt="" />
+            <img className="w-14 h-14" src={logo} alt="" />
             <Link className="text-xl md:text-2xl font-bold">RepairMate</Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 *:*:bg-none">{menu}</ul>
+          <ul className="menu menu-horizontal px-1 *:*:bg-none gap-4">
+            {menu}
+          </ul>
         </div>
 
         <div className="navbar-end">
@@ -103,17 +145,17 @@ const Navbar = () => {
                 <MdLightMode
                   className="hover:scale-105"
                   onClick={() => {
-                    document.documentElement.setAttribute(
-                      "data-theme",
-                      "light"
-                    );
+                    document.documentElement.setAttribute("data-theme", "dark");
                   }}
                 />
               ) : (
                 <MdDarkMode
                   className="hover:scale-105"
                   onClick={() => {
-                    document.documentElement.setAttribute("data-theme", "dark");
+                    document.documentElement.setAttribute(
+                      "data-theme",
+                      "light"
+                    );
                   }}
                 />
               )}

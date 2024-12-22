@@ -1,11 +1,5 @@
 /* eslint-disable react/prop-types */
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
@@ -44,29 +38,7 @@ const AuthProvider = ({ children }) => {
     return () => subscribe;
   }, []);
 
-  // handle login user
-  const handleLogin = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   // handle google sign up
-  const handleSignUpWithGoogle = () => {
-    const googleProvider = new GoogleAuthProvider();
-    signInWithPopup(auth, googleProvider)
-      .then((res) => {
-        console.log(res.user);
-        setUser(res.user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   // handle logout user
   const handleLogout = () => {
@@ -105,8 +77,6 @@ const AuthProvider = ({ children }) => {
   const info = {
     handleLogout,
     user,
-    handleLogin,
-    handleSignUpWithGoogle,
     loading,
     services,
     error,
