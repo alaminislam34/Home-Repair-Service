@@ -7,6 +7,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
@@ -16,7 +17,20 @@ const AuthProvider = ({ children }) => {
     const subscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+        const email = { email: currentUser?.email };
+        axios
+          .post("http://localhost:5000/jwt", email, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
       } else {
+        console.log(currentUser);
+
+        axios
+          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .then((res) => {
+            console.log(res);
+          });
         setUser(null);
       }
     });
@@ -33,16 +47,23 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  //   handle log out user
   const handleLogout = () => {
-    signOut(auth).then((res) => {
-      console.log(res);
-      Swal.fire({
-        title: "Success",
-        text: "Account Logout Successfully",
-        icon: "success",
+    signOut(auth)
+      .then(() => {
+        Swal.fire({
+          title: "Success",
+          text: "Account Logout Successfully",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+        Swal.fire({
+          title: "Error",
+          text: "Failed to logout",
+          icon: "error",
+        });
       });
-    });
   };
 
   const info = { handleLogout, user, handleLogin };
