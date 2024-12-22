@@ -8,6 +8,7 @@ import BookedService from "../Pages/Dashboard/BookedService";
 import ServiceToDo from "../Pages/Dashboard/ServiceToDo";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -32,19 +33,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/addService",
-        element: <AddService />,
+        element: (
+          <PrivateRoutes>
+            <AddService />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/manageService",
-        element: <ManageService />,
+        element: (
+          <PrivateRoutes>
+            <ManageService />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/bookedServices",
-        element: <BookedService />,
+        element: (
+          <PrivateRoutes>
+            <BookedService />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/serviceToDo",
-        element: <ServiceToDo />,
+        element: (
+          <PrivateRoutes>
+            <ServiceToDo />
+          </PrivateRoutes>
+        ),
       },
     ],
   },

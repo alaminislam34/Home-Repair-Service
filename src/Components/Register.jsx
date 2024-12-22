@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Register = () => {
+  const { handleSignUpWithGoogle } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -124,6 +127,11 @@ const Register = () => {
         <p>
           Already have an account ? <Link to="/login">Login</Link>
         </p>
+        <div className="flex justify-center items-center">
+          <button onClick={handleSignUpWithGoogle} className="btn">
+            Continue with google
+          </button>
+        </div>
       </form>
     </div>
   );

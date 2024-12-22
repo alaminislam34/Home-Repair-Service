@@ -1,18 +1,22 @@
 /* eslint-disable react/prop-types */
 import {
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  // on auth state change handle
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -36,6 +40,7 @@ const AuthProvider = ({ children }) => {
     });
     return () => subscribe;
   }, []);
+
   // handle login user
   const handleLogin = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -47,6 +52,20 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // handle google sign up
+  const handleSignUpWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        console.log(res.user);
+        setUser(res.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // handle logout user
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -66,7 +85,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  const info = { handleLogout, user, handleLogin };
+  const info = { handleLogout, user, handleLogin, handleSignUpWithGoogle };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };
 

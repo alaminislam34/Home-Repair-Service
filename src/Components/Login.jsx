@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Login = () => {
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin, handleSignUpWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +14,7 @@ const Login = () => {
     console.table({ email, password });
     handleLogin(email, password);
   };
+
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
       <form
@@ -46,6 +48,16 @@ const Login = () => {
         <p>
           Don`t have an account ? <Link to="/register">Register</Link>
         </p>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={() => {
+              handleSignUpWithGoogle, navigate("/");
+            }}
+            className="btn"
+          >
+            Continue with google
+          </button>
+        </div>
       </form>
     </div>
   );
