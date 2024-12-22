@@ -1,10 +1,14 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { handleLogin, handleSignUpWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state);
+
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +17,14 @@ const Login = () => {
 
     console.table({ email, password });
     handleLogin(email, password);
+    navigate(location?.state ? location.state : "/");
+    form.reset();
+    Swal.fire({
+      title: "Success!",
+      text: "User Login successfully",
+      icon: "success",
+      confirmButtonText: "Ok",
+    });
   };
 
   return (
@@ -51,7 +63,8 @@ const Login = () => {
         <div className="flex justify-center items-center">
           <button
             onClick={() => {
-              handleSignUpWithGoogle, navigate("/");
+              handleSignUpWithGoogle,
+                navigate(location?.state ? location.state : "/");
             }}
             className="btn"
           >

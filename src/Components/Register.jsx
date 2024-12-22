@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { useContext } from "react";
@@ -8,6 +8,9 @@ import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Register = () => {
   const { handleSignUpWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
     register,
     handleSubmit,
@@ -25,16 +28,25 @@ const Register = () => {
     const form = e;
     const email = e.email;
     const password = e.password;
+    const name = e.name;
+    const photoURL = e.photoURL;
     console.table(form);
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
-        Swal.fire({
-          title: "Success",
-          text: "Account Register Successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photoURL,
+        }).then((res) => {
+          console.log(res);
+          Swal.fire({
+            title: "Success",
+            text: "Account Register Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
         });
+        navigate(location?.state ? location.state : "/");
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +72,7 @@ const Register = () => {
           <label htmlFor="email">Your Name</label>
           <input
             type="text"
-            placeholder="Enter your email"
+            placeholder="Enter your name"
             className="input input-secondary"
             {...register("name", { required: "Name is required" })}
           />
@@ -128,7 +140,13 @@ const Register = () => {
           Already have an account ? <Link to="/login">Login</Link>
         </p>
         <div className="flex justify-center items-center">
-          <button onClick={handleSignUpWithGoogle} className="btn">
+          <button
+            onClick={() => {
+              handleSignUpWithGoogle,
+                navigate(location?.state ? location.state : "/");
+            }}
+            className="btn"
+          >
             Continue with google
           </button>
         </div>

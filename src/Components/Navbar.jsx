@@ -26,17 +26,14 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/services">Services</NavLink>
-      </li>
-
-      <button className="relative ">
-        <button onClick={handleDropdown} className="">
-          Dashboard
-        </button>
+      </li>{" "}
+      <button onClick={handleDropdown} className="relative z-40 border px-2">
+        Dashboard
         {isOpen ? (
           <div
             className={`${
               isOpen ? "" : ""
-            } overflow-hidden absolute top-10 left-0 flex flex-col gap-1 w-44 bg-none hover:bg-none`}
+            } overflow-hidden bg-transparent/80 backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-1 w-44 bg-none hover:bg-none`}
           >
             <ul className="list-none m-0 bg-none">
               <li onClick={() => setIsOpen(!open)}>
@@ -125,7 +122,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex items-center">
               <img
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-accent"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover bg-center bg-cover border-2 border-accent"
                 src={user?.photoURL ? user.photoURL : userImage}
                 alt=""
                 referrerPolicy="no-referrer"

@@ -1,5 +1,11 @@
+import { useContext } from "react";
 import banner1 from "../../assets/Banner/banner1.jpg";
+import { AuthContext } from "../../AuthContext/AuthProvider";
+import Loader from "../../Components/Loader";
+import { Link } from "react-router-dom";
 const Home = () => {
+  const { services, loader } = useContext(AuthContext);
+  console.log(services);
   return (
     <div className="mb-32">
       <div className="w-full relative mb-36">
@@ -22,7 +28,48 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div>hel</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+        {loader ? (
+          <Loader />
+        ) : services ? (
+          services.map((service) => (
+            <div key={service._id} className="flex flex-row gap-4 *:flex-1">
+              <div>
+                <img
+                  className="aspect-square object-cover bg-center bg-cover bg-no-repeat w-full h-full"
+                  src={service?.provider?.service.serviceImgURL}
+                  alt=""
+                />
+              </div>
+              <div>
+                {/* service name */}
+                <h2>{service?.provider?.service.serviceName}</h2>
+                {/* service description */}
+                <p>{service?.provider?.service.description.slice(0, 100)}</p>
+                {/* service provider */}
+                <div className="flex flex-row gap-4 items-center">
+                  <img
+                    className="w-14 h-14 rounded-full object-cover bg-center border-2 border-accent"
+                    src={service?.provider.photoURL}
+                    alt=""
+                  />
+                  <h4>{service?.provider.name}</h4>
+                </div>
+                <p>{service?.provider.service.servicePrice} ৳</p>
+
+                <Link
+                  to={`/serviceDetails/${service._id}`}
+                  className="px-4 py-2 bg-transparent hover:translate-x-2 hover:scale-105 border duration-500 inline-block hover:bg-green-500 hover:text-white"
+                >
+                  Details
+                </Link>
+              </div>
+            </div>
+          ))
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

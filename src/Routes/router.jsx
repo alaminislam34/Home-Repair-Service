@@ -9,6 +9,9 @@ import ServiceToDo from "../Pages/Dashboard/ServiceToDo";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import PrivateRoutes from "./PrivateRoutes";
+import ServiceDetails from "../Components/ServiceDetails";
+import axios from "axios";
+import PageNotFound from "../Components/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,20 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/serviceDetails/:id",
+        element: (
+          <PrivateRoutes>
+            <ServiceDetails />
+          </PrivateRoutes>
+        ),
+        loader: async ({ params }) => {
+          const res = await axios.get(
+            `http://localhost:5000/serviceDetails/${params.id}`
+          );
+          return res.data;
+        },
+      },
+      {
         path: "/manageService",
         element: (
           <PrivateRoutes>
@@ -62,6 +79,10 @@ const router = createBrowserRouter([
             <ServiceToDo />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/*",
+        element: <PageNotFound />,
       },
     ],
   },
