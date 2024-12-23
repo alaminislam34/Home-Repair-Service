@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [services, setServices] = useState([]);
   const [error, setError] = useState(null);
+  const [id, setId] = useState("");
 
   // on auth state change handle
   useEffect(() => {
@@ -38,8 +39,6 @@ const AuthProvider = ({ children }) => {
     return () => subscribe;
   }, []);
 
-  // handle google sign up
-
   // handle logout user
   const handleLogout = () => {
     signOut(auth)
@@ -63,7 +62,7 @@ const AuthProvider = ({ children }) => {
   // handle fetch services
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_URL}/allServices`)
+      .get(`http://localhost:5000/allServices`, { withCredentials: true })
       .then((res) => {
         setServices(res.data);
         setLoader(false);
@@ -81,6 +80,9 @@ const AuthProvider = ({ children }) => {
     services,
     error,
     loader,
+    setServices,
+    id,
+    setId,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

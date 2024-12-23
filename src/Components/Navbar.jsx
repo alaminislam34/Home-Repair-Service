@@ -6,7 +6,7 @@ import userImage from "../assets/logos/user.jpg";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Navbar = () => {
-  const { user, handleLogout } = useContext(AuthContext);
+  const { user, handleLogout, id } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [light, setLight] = useState(true);
   const location = useLocation();
@@ -34,21 +34,21 @@ const Navbar = () => {
       case "/addService":
         document.title = "Add Service";
         break;
-      // case "/favorite":
-      //   document.title = "Favorite Movies";
-      //   break;
-      // case `/viewDetails/`:
-      //   document.title = "Movie Details";
-      //   break;
-      // case `/updateMovie/`:
-      //   document.title = "Favorite Movies";
-      //   break;
-      // case `/resetPass`:
-      //   document.title = "Password Reset";
-      //   break;
-      // case `/trendingMovies`:
-      //   document.title = "Trending Movies";
-      //   break;
+      case `/serviceDetails/${id}`:
+        document.title = "Service Details";
+        break;
+      case `/manageService`:
+        document.title = "Manage Service";
+        break;
+      case `/bookedServices`:
+        document.title = "Booked Services";
+        break;
+      case `/serviceToDo`:
+        document.title = "Service To Do";
+        break;
+      case `/*`:
+        document.title = "Page Not Founded";
+        break;
     }
   }, [location.pathname]);
 

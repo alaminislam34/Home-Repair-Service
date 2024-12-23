@@ -10,7 +10,9 @@ const ManageService = () => {
   useEffect(() => {
     const email = user.email;
     axios
-      .get(`http://localhost:5000/allServices?email=${email}`)
+      .get(`http://localhost:5000/allServices?email=${email}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setMyServices(res.data);
         setLoader(false);
@@ -30,7 +32,13 @@ const ManageService = () => {
         )}
       </h1>
       <div>
-        <MyServicesTable service={{ myServices, setMyServices }} />
+        {loader ? (
+          <div className="w-full h-[50vh] flex justify-center items-center">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        ) : (
+          <MyServicesTable service={{ myServices, setMyServices }} />
+        )}
       </div>
     </div>
   );

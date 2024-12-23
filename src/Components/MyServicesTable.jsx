@@ -21,7 +21,7 @@ const MyServicesCard = ({ service }) => {
 
   // handle delete service
   const handleDeleteService = (id) => {
-    setLoading(true); // Start loading when the delete process starts
+    setLoading(true);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to delete this!",
@@ -43,16 +43,15 @@ const MyServicesCard = ({ service }) => {
                 icon: "success",
               });
 
-              // Remove the deleted service from the myServices array
               const remainingService = myServices.filter((s) => s._id !== id);
-              setMyServices(remainingService); // Update the state after successful deletion
+              setMyServices(remainingService);
             }
           })
           .catch((error) => {
             console.log(error);
           })
           .finally(() => {
-            setLoading(false); // End loading after the deletion process completes
+            setLoading(false);
           });
       } else {
         Swal.fire({

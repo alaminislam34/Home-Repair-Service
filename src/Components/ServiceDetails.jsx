@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthProvider";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -18,21 +21,44 @@ const ServiceDetails = () => {
     const pName = form.pName.value;
     const uEmail = form.uEmail.value;
     const uName = form.uName.value;
-    const sDate = new Date(form.sDate.value);
+    const serviceDate = new Date(form.sDate.value);
+    const sDate = serviceDate.toISOString();
     const price = form.price.value;
     const provideArea = form.area.value;
-    console.table({
-      serviceId,
-      serviceName,
-      serviceImg,
-      pEmail,
-      pName,
-      uEmail,
-      uName,
-      sDate,
-      price,
-      provideArea,
-    });
+    const serviceStatus = "pending";
+
+    if (pEmail === uEmail) {
+      return toast.error("Action not permitted");
+    }
+
+    axios
+      .post(
+        `${import.meta.env.VITE_URL}/bookServices`,
+        {
+          serviceId,
+          serviceName,
+          serviceImg,
+          pEmail,
+          pName,
+          uEmail,
+          uName,
+          sDate,
+          price,
+          provideArea,
+          serviceStatus,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        form.reset();
+        document.getElementById("my_modal_5").close();
+        Swal.fire({
+          title: "Success",
+          text: "Service booked successfully",
+          icon: "success",
+        });
+        console.log(res.data);
+      });
   };
 
   return (
@@ -44,7 +70,11 @@ const ServiceDetails = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 md:my-8 lg:my-12">
         <div className="md:col-span-2">
-          <img src={provider?.service.serviceImgURL} alt="" />
+          <img
+            className="w-full h-full"
+            src={provider?.service.serviceImgURL}
+            alt=""
+          />
         </div>
         <div className="space-y-2 p-4">
           <p className="">{provider?.service.description}</p>
@@ -64,9 +94,9 @@ const ServiceDetails = () => {
           <div>
             <button
               onClick={() => document.getElementById("my_modal_5").showModal()}
-              className="px-4 py-2 bg-transparent hover:translate-x-2 hover:scale-105 border duration-500 inline-block hover:bg-green-500 hover:text-white"
+              className="px-4 py-2 bg-transparent hover:scale-105 border duration-500 inline-block hover:bg-green-500 hover:text-white"
             >
-              Details
+              Book Service
             </button>
           </div>
         </div>
@@ -75,95 +105,129 @@ const ServiceDetails = () => {
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="flex justify-center items-center">
-            <form onSubmit={handleBooked}>
+            <form onSubmit={handleBooked} className="w-full">
               <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-center my-2">
                 Book Service
               </h2>
-              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:border *:border-white *:w-full *:py-1 *:px-2 md:*:py-1.5 md:*:px-3">
+              <div className="flex w-full flex-row *:flex-1 gap-3 items-center *:w-full">
                 {/* service id */}
-                <input
-                  type="text"
-                  value={data._id}
-                  name="serviceId"
-                  readOnly
-                  className="input"
-                />
-
+                <div className="flex flex-col">
+                  <span>Service Id</span>
+                  <input
+                    type="text"
+                    value={data._id}
+                    name="serviceId"
+                    readOnly
+                    className={` border py-1.5 rounded px-3 text-sm  text-gray-400`}
+                  />
+                </div>
                 {/* service name */}
-                <input
-                  type="text"
-                  name="serviceName"
-                  value={provider?.service.serviceName}
-                  readOnly
-                  className="input my-2"
-                />
+                <div className="flex flex-col">
+                  <span>Service Name</span>
+                  <input
+                    type="text"
+                    name="serviceName"
+                    value={provider?.service.serviceName}
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm my-2 text-gray-400`}
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:border *:border-white *:w-full *:py-1 *:px-2 md:*:py-1.5 md:*:px-3">
+              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:w-full">
                 {/* service image */}
-                <input
-                  value={provider?.service.serviceImgURL}
-                  name="serviceImg"
-                  className="input my-2"
-                  readOnly
-                />
+                <div className="flex flex-col">
+                  <span>Service Image</span>
+                  <input
+                    value={provider?.service.serviceImgURL}
+                    name="serviceImg"
+                    className={` border py-1.5 px-3 rounded text-sm my-2 text-gray-400`}
+                    readOnly
+                  />
+                </div>
                 {/* provider email  */}
-                <input
-                  type="email"
-                  value={provider?.email}
-                  name="pEmail"
-                  readOnly
-                  className="input my-2"
-                />
+                <div className="flex flex-col">
+                  <span>Provider Email</span>
+                  <input
+                    type="email"
+                    value={provider?.email}
+                    name="pEmail"
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:border *:border-white *:w-full *:py-1 *:px-2 md:*:py-1.5 md:*:px-3">
+              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:w-full">
                 {/* provider name */}
-                <input
-                  type="text"
-                  name="pName"
-                  value={provider?.name}
-                  readOnly
-                  className="input my-2"
-                />
-
+                <div className="flex flex-col">
+                  <span>Provider Name</span>
+                  <input
+                    type="text"
+                    name="pName"
+                    value={provider?.name}
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                  />
+                </div>
                 {/* user email  */}
-                <input
-                  type="email"
-                  name="uEmail"
-                  value={user?.email}
-                  readOnly
-                  className="input my-2"
-                />
+                <div className="flex flex-col">
+                  <span>User Email</span>
+                  <input
+                    type="email"
+                    name="uEmail"
+                    value={user?.email}
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:border *:border-white *:w-full *:py-1 *:px-2 md:*:py-1.5 md:*:px-3">
+              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:w-full">
                 {/* user name */}
-                <input
-                  type="text"
-                  name="uName"
-                  value={user?.displayName}
-                  readOnly
-                  className="input my-2"
-                />
+                <div className="flex flex-col">
+                  <span>User Name </span>
+                  <input
+                    type="text"
+                    name="uName"
+                    value={user?.displayName}
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                  />
+                </div>
 
                 {/* service date */}
-                <input type="date" name="sDate" className="input my-2" />
+                <div className="flex flex-col">
+                  <span>Service Date</span>
+                  <input
+                    type="date"
+                    name="sDate"
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                    required
+                  />
+                </div>
               </div>
-              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:border *:border-white *:w-full *:py-1 *:px-2 md:*:py-1.5 md:*:px-3">
+              <div className="flex w-full flex-row *:flex-1 gap-2 items-center *:w-full">
                 {/* service area */}
-                <input
-                  type="text"
-                  name="area"
-                  placeholder="Special Instructions"
-                  className="textarea my-2"
-                />
-
+                <div className="flex flex-col">
+                  <span>Service Area</span>
+                  <input
+                    type="text"
+                    name="area"
+                    placeholder="Special Instructions"
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                    required
+                  />
+                </div>
                 {/* service price */}
-                <input
-                  type="text"
-                  name="price"
-                  value={provider?.service.servicePrice}
-                  readOnly
-                  className="input my-2"
-                />
+                <div className="flex flex-col">
+                  {" "}
+                  <span>Service Price</span>
+                  <input
+                    type="text"
+                    name="price"
+                    value={provider?.service.servicePrice}
+                    readOnly
+                    className={` border py-1.5 px-3 rounded text-sm  my-2 text-gray-400`}
+                  />
+                </div>
               </div>
               <button type="submit" className="btn btn-primary w-full">
                 Purchase
@@ -173,11 +237,12 @@ const ServiceDetails = () => {
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
+              <button className="">Close</button>
             </form>
           </div>
         </div>
       </dialog>
+      <ToastContainer />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import Loader from "../../Components/Loader";
 import { Link } from "react-router-dom";
 const Home = () => {
-  const { services, loader } = useContext(AuthContext);
+  const { services, loader, setId } = useContext(AuthContext);
   console.log(services);
   return (
     <div className="mb-32">
@@ -58,6 +58,7 @@ const Home = () => {
                 <p>{service?.provider.service.servicePrice} ৳</p>
 
                 <Link
+                  onClick={() => setId(service._id)}
                   to={`/serviceDetails/${service._id}`}
                   className="px-4 py-2 bg-transparent hover:translate-x-2 hover:scale-105 border duration-500 inline-block hover:bg-green-500 hover:text-white"
                 >
