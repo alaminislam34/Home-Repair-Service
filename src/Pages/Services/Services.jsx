@@ -30,10 +30,12 @@ const Services = () => {
   return (
     <div>
       <div>
-        <div className="my-4 md:my-6 flex justify-center items-center">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold border-b-2 border-primary py-2 inline text-center">
-            Our All Services
-          </h2>
+        <div className="flex justify-center items-center bg-servicePage bg-cover object-cover bg-center lg:bg-top bg-no-repeat  h-[200px] md:h-[250px] lg:h-[300px]">
+          <div className="w-full h-full flex justify-center items-center bg-black/60">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center text-gray-200">
+              Our All Services
+            </h2>
+          </div>
         </div>
         <div className="w-full py-4 px-4">
           <form
@@ -41,7 +43,7 @@ const Services = () => {
             className="flex flex-row justify-center items-center border-b-2 border-base-300 p-4 rounded-lg"
           >
             <input
-              className="border border-base-300 rounded-l-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border border-primary focus:border-primary outline-none rounded-l-lg py-1.5 px-3 md:py-2 md:px-4"
               type="text"
               name="search"
               onChange={(v) => setValue(v.target.value)}
@@ -49,7 +51,7 @@ const Services = () => {
               placeholder="Search service"
             />
             <input
-              className="border border-base-300 cursor-pointer bg-accent rounded-r-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border border-base-300 cursor-pointer bg-primary text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4"
               type="submit"
               value="Search"
             />
@@ -75,9 +77,9 @@ const Services = () => {
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
               } rounded-lg hover:scale-105 transition-transform duration-500`}
             >
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 overflow-hidden">
                 <img
-                  className="aspect-video object-cover bg-center bg-cover bg-no-repeat w-full h-full"
+                  className="aspect-video object-cover bg-center bg-cover bg-no-repeat hover:scale-105 transition-transform duration-500  w-full h-full"
                   src={service?.provider?.service.serviceImgURL}
                   alt=""
                 />
@@ -114,7 +116,7 @@ const Services = () => {
                         setId(service._id);
                         navigate(`/serviceDetails/${service._id}`);
                       }}
-                      className="px-4 py-2 border border-gray-300 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-md shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out"
+                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
                     >
                       View Details
                     </button>

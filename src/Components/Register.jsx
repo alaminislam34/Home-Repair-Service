@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Register = () => {
-  const { handleSignUpWithGoogle } = useContext(AuthContext);
+  const { handleSignUpWithGoogle, theme } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -60,12 +60,16 @@ const Register = () => {
     reset();
   };
   return (
-    <div className="flex justify-center items-center min-h-[80vh] my-6 md:my-12">
+    <div className="flex justify-center items-center min-h-[80vh] my-6 md:my-8">
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="flex flex-col gap-2 border m-4 p-4 md:p-6 shadow-xl w-11/12 sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto"
+        className={`flex flex-col gap-2 m-4 p-4 md:p-6 ${
+          theme === "light"
+            ? "shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]"
+            : "shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)]"
+        }  w-11/12 sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto rounded-3xl`}
       >
-        <h2 className="my-2 md:my-4 text-center text-xl md:text-2xl lg:text-3xl font-semibold">
+        <h2 className="my-2 md:my-4 text-center text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
           Register
         </h2>
         <div className="flex flex-col gap-1">
@@ -73,7 +77,7 @@ const Register = () => {
           <input
             type="text"
             placeholder="Enter your name"
-            className="input input-secondary"
+            className="input input-primary border-base-300 outline-none"
             {...register("name", { required: "Name is required" })}
           />
           {errors?.name ? (
@@ -89,7 +93,7 @@ const Register = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="input input-secondary"
+            className="input input-primary border-base-300 outline-none"
             {...register("email", { required: "Email is required" })}
           />
           {errors?.email ? (
@@ -105,7 +109,7 @@ const Register = () => {
           <input
             type="password"
             placeholder="Enter your password"
-            className="input input-secondary"
+            className="input input-primary border-base-300 outline-none"
             {...register("password", {
               required:
                 "Password must be at least 6 character one upperChase, one lowerChase or one special character",
@@ -124,7 +128,7 @@ const Register = () => {
           <input
             type="text"
             placeholder="Enter your photoURL"
-            className="input input-secondary"
+            className="input input-primary border-base-300 outline-none"
             {...register("photoURL", { required: "PhotoURL is required" })}
           />
           {errors?.photoURL ? (
@@ -135,8 +139,12 @@ const Register = () => {
             ""
           )}
         </div>
-        <input className="btn" type="submit" value="Login" />
-        <p>
+        <input
+          className="btn my-2 btn-primary border-base-300 outline-none text-base"
+          type="submit"
+          value="Login"
+        />
+        <p className="text-center">
           Already have an account ? <Link to="/login">Login</Link>
         </p>
         <div className="flex justify-center items-center">

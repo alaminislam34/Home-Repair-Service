@@ -34,7 +34,7 @@ const Home = () => {
               data-aos-delay="300"
               data-aos-duration="1200"
               data-aos-easing="ease-in-out"
-              className="text-2xl md:text-2xl lg:text-4xl font-bold lg:w-9/12 mx-auto"
+              className="text-2xl md:text-3xl lg:text-5xl font-bold lg:w-9/12 mx-auto"
             >
               Bangladesh`s One-Stop Solution for Renovation & Interior Design.
             </h2>
@@ -65,18 +65,22 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div data-aos="zoom-in-right" data-aos-duration="1500" className="mx-4">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold border-b-2 border-primary inline py-2">
+      <div
+        data-aos="zoom-in-right"
+        data-aos-duration="1500"
+        className="mx-4 flex justify-center items-center"
+      >
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold border-b-2 border-primary inline-block py-2">
           Our Popular Services
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 lg:gap-6 my-8 md:my-12 mx-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 lg:gap-6 my-8 md:my-12 mx-4 border-t-2 py-8">
         {loader ? (
           <div className="md:col-span-2">
             <Loader />
           </div>
         ) : services.length > 0 ? (
-          services.map((service, i) => (
+          services.slice(0, 6).map((service, i) => (
             <div
               data-aos="fade-up"
               data-aos-duration="1200"
@@ -88,9 +92,9 @@ const Home = () => {
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
               } rounded-lg hover:scale-105 transition-transform duration-500`}
             >
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 overflow-hidden">
                 <img
-                  className="aspect-video object-cover bg-center bg-cover bg-no-repeat w-full h-full"
+                  className="aspect-video object-cover bg-center bg-cover bg-no-repeat w-full h-full transition-transform duration-500 hover:scale-110"
                   src={service?.provider?.service.serviceImgURL}
                   alt=""
                 />
@@ -121,13 +125,13 @@ const Home = () => {
                     <h4>{service?.provider.name}</h4>
                   </div>
 
-                  <div className="my-2">
+                  <div className="mt-4">
                     <button
                       onClick={() => {
                         setId(service._id);
                         navigate(`/serviceDetails/${service._id}`);
                       }}
-                      className="px-4 py-2 border border-gray-300 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-md shadow-md hover:shadow-lg transition-transform duration-300 ease-in-out"
+                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
                     >
                       View Details
                     </button>

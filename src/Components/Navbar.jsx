@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import "../../src/index.css";
 import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
-  const { user, handleLogout, id, setTheme } = useContext(AuthContext);
+  const { user, handleLogout, id, setTheme, theme } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [light, setLight] = useState(true);
   const location = useLocation();
@@ -57,47 +57,75 @@ const Navbar = () => {
   }, [location.pathname, id]);
 
   // handle dashboard dropdown
-  const handleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  // Dropdown ওপেন করার জন্য
+  const handleDropdownOpen = () => setIsOpen(true);
+
+  // Dropdown ক্লোজ করার জন্য
+  const handleDropdownClose = () => setIsOpen(false);
+
   const menu = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
+      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+        <NavLink to="/" className="text-base md:text-lg">
+          Home
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/services">Services</NavLink>
-      </li>{" "}
-      <button
-        onClick={handleDropdown}
-        className="relative z-50 font-medium rounded-lg px-2"
+      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+        <NavLink to="/services" className="text-base md:text-lg">
+          Services
+        </NavLink>
+      </li>
+      <div
+        className="relative"
+        onMouseEnter={handleDropdownOpen} // Hover to open
+        onMouseLeave={handleDropdownClose} // Hover out to close
       >
-        <span className="hover:text-red-500">Dashboard</span>
-        {isOpen ? (
+        {/* Dropdown Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)} // Toggle dropdown on click
+          className={`transition duration-500 hover:scale-105 hover:-translate-y-1.5 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)]  py-2 px-4 rounded-lg`}
+        >
+          Dashboard
+        </button>
+
+        {/* Dropdown Content */}
+        {isOpen && (
           <div
-            className={`${
-              isOpen ? "" : ""
-            } overflow-hidden  backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-2 p-4 w-40 md:w-44 bg-none hover:bg-none`}
+            className={`absolute left-0 w-48 rounded-lg shadow-lg z-50 ${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-900 text-white"
+            }`}
           >
-            <ul className="flex flex-col gap-1 justify-start text-left">
-              <li onClick={() => setIsOpen(!open)}>
+            <ul className="flex flex-col p-4">
+              <li
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
                 <NavLink to="/addService">Add Service</NavLink>
               </li>
-              <li onClick={() => setIsOpen(!open)}>
+              <li
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
                 <NavLink to="/manageService">Manage Service</NavLink>
               </li>
-              <li onClick={() => setIsOpen(!open)}>
+              <li
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
                 <NavLink to="/bookedServices">Booked Service</NavLink>
               </li>
-              <li onClick={() => setIsOpen(!open)}>
+              <li
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
                 <NavLink to="/serviceToDo">Service ToDo</NavLink>
               </li>
             </ul>
           </div>
-        ) : (
-          ""
         )}
-      </button>
+      </div>
     </>
   );
 
@@ -117,19 +145,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.div
-      data-aos="zoom-in-down"
-      data-aos-delay="500"
-      data-aos-duration="2000"
+    <div
       className={`w-full transition-all duration-500 z-50 ${
         isSticky
-          ? "sticky top-0 z-50 bg-white shadow-md backdrop-blur-lg"
+          ? "sticky top-0 z-50 shadow-md backdrop-blur-lg bg-white/75"
           : "relative"
       }`}
     >
       {/* navbar */}
       <div
-        className={`navbar bg-base-100 max-w-7xl mx-auto py-4 transition-all duration-300 `}
+        className={`navbar max-w-7xl mx-auto py-4 transition-all duration-300 `}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -236,7 +261,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
