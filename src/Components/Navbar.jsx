@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logos/Blogo.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
@@ -91,7 +91,7 @@ const Navbar = () => {
         {/* Dropdown Content */}
         {isOpen && (
           <div
-            className={`absolute left-0 w-48 rounded-lg shadow-lg z-50 ${
+            className={`absolute left-0 w-48 md:w-52 rounded-lg shadow-lg z-50 ${
               theme === "light"
                 ? "bg-white text-black"
                 : "bg-gray-900 text-white"
@@ -148,7 +148,7 @@ const Navbar = () => {
     <div
       className={`w-full transition-all duration-500 z-50 ${
         isSticky
-          ? "sticky top-0 z-50 shadow-md backdrop-blur-lg bg-white/75"
+          ? "sticky top-0 z-50 shadow-md backdrop-blur-lg bg-base-200"
           : "relative"
       }`}
     >
@@ -205,27 +205,24 @@ const Navbar = () => {
         {/* navbar end */}
         <div className="navbar-end">
           <div>
-            <motion.button
-              whileHover={{ scale: 1.2 }}
+            <button
               onClick={handleTheme}
-              className="text-lg sm:text-xl md:text-2xl flex items-center justify-center m-2 duration-1000"
+              className="text-lg p-2 flex items-center justify-center m-2 hover:bg-base-300 rounded-lg"
             >
               {light ? (
                 <MdLightMode
-                  className="hover:scale-105"
                   onClick={() => {
                     setTheme("dark");
                   }}
                 />
               ) : (
                 <MdDarkMode
-                  className="hover:scale-105"
                   onClick={() => {
                     setTheme("light");
                   }}
                 />
               )}
-            </motion.button>
+            </button>
           </div>
           {/* user section */}
           {user ? (
@@ -236,28 +233,28 @@ const Navbar = () => {
               className="flex items-center"
             >
               <img
-                className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover bg-center bg-cover border-2 border-accent"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover bg-center bg-cover border-2 border-blue-500"
                 src={user?.photoURL ? user.photoURL : userImage}
                 alt=""
                 referrerPolicy="no-referrer"
               />
               <button
                 onClick={handleLogout}
-                className="p-2 sm:py-1 md:py-2 sm:px-3 text-sm md:text-base rounded-lg bg-base-300 ml-2"
+                className="px-3 py-1.5 text-sm ml-2 border-gray-300 bg-gradient-to-l from-red-300 via-red-400 to-red-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
               >
                 <span className="hidden sm:flex">Logout</span>{" "}
                 <span className="sm:hidden">
-                  {" "}
                   <IoMdLogOut />{" "}
                 </span>
               </button>
             </motion.div>
           ) : (
-            <Link to="/login">
-              <motion.button className="btn btn-primary btn-sm md:btn-md">
-                Login
-              </motion.button>
-            </Link>
+            <button
+              onClick={() => navigate("/login")}
+              className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>

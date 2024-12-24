@@ -55,9 +55,7 @@ const Home = () => {
             >
               <button
                 onClick={() => navigate("/services")}
-                className={`py-2 px-4 bg-base-200 rounded duration-500 hover:scale-105 ${
-                  theme === "light" ? " text-black" : "text-white"
-                } hover:text-white hover:bg-green-500`}
+                className="px-4 py-2 md:py-2.5 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
               >
                 See All Services
               </button>
@@ -151,6 +149,14 @@ const Home = () => {
             No Service Available
           </div>
         )}
+      </div>
+      <div className="flex justify-center items-center my-4">
+        <button
+          onClick={() => navigate("/services")}
+          className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+        >
+          See All Services
+        </button>
       </div>
     </div>
   );
