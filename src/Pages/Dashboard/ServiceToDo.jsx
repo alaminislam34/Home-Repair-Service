@@ -39,7 +39,9 @@ const ServiceToDo = () => {
         {bookedService.length > 0 ? (
           <ServiceTodoTable service={{ bookedService }} />
         ) : (
-          <div>NO Service Available</div>
+          <div className="flex justify-center items-center text-xl">
+            No booked services available
+          </div>
         )}
       </div>
     </div>

@@ -4,17 +4,19 @@ const Footer = () => {
       <footer className="footer text-neutral-content p-10 max-w-7xl mx-auto">
         <nav>
           <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <a className="link link-hover">Electrical Work</a>
+          <a className="link link-hover">Plumbing Work</a>
+          <a className="link link-hover"> Tiles Work</a>
+          <a className="link link-hover">Interior Work</a>
+          <a className="link link-hover">Deep Cleaning</a>
+          <a className="link link-hover">Painting & Polishing</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <h6 className="footer-title">Use Links</h6>
+          <a className="link link-hover">Home</a>
+          <a className="link link-hover">Services</a>
+          <a className="link link-hover">Booked Services</a>
+          <a className="link link-hover">Manage Services</a>
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>
@@ -28,3 +30,17 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// Renovation & Remodeling
+//
+// Civil Work
+// Electrical Work
+//
+// Tiles Work
+//
+// Folding /Sliding Door
+// Thai Aluminum Work
+// Grill & S.S Work
+// Carpentry Work
+//
+// Pest Control

@@ -79,7 +79,7 @@ const MyServicesCard = ({ service }) => {
           text: "Service delete cancelled",
           icon: "success",
         });
-        setLoading(false); // End loading if the user cancels the action
+        setLoading(false);
       }
     });
   };

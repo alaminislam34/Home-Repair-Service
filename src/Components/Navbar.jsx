@@ -66,12 +66,12 @@ const Navbar = () => {
   const menu = (
     <>
       <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
-        <NavLink to="/" className="text-base md:text-lg">
+        <NavLink to="/" className="text-sm md:text-base">
           Home
         </NavLink>
       </li>
       <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
-        <NavLink to="/services" className="text-base md:text-lg">
+        <NavLink to="/services" className="text-sm md:text-base">
           Services
         </NavLink>
       </li>
@@ -99,25 +99,25 @@ const Navbar = () => {
           >
             <ul className="flex flex-col p-4">
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/addService">Add Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/manageService">Manage Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/bookedServices">Booked Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg"
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/serviceToDo">Service ToDo</NavLink>
