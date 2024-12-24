@@ -1,15 +1,19 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logos/Blogo.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
 import userImage from "../assets/logos/user.jpg";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-
+import { motion } from "motion/react";
+import "../../src/index.css";
+import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   const { user, handleLogout, id } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [light, setLight] = useState(true);
   const location = useLocation();
+  const [isSticky, setIsSticky] = useState(false);
+  const navigate = useNavigate();
 
   // handle page theme mode
   const handleTheme = () => {
@@ -50,7 +54,7 @@ const Navbar = () => {
         document.title = "Page Not Founded";
         break;
     }
-  }, [location.pathname]);
+  }, [location.pathname, id]);
 
   // handle dashboard dropdown
   const handleDropdown = () => {
@@ -66,16 +70,16 @@ const Navbar = () => {
       </li>{" "}
       <button
         onClick={handleDropdown}
-        className="relative z-40 hover:bg-base-300 rounded-lg px-2"
+        className="relative z-40 font-medium rounded-lg px-2"
       >
-        Dashboard
+        <span className="hover:text-red-500">Dashboard</span>
         {isOpen ? (
           <div
             className={`${
               isOpen ? "" : ""
-            } overflow-hidden  backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-1 w-44 bg-none hover:bg-none`}
+            } overflow-hidden  backdrop-blur-lg absolute top-10 left-0 flex flex-col gap-2 p-4 w-40 md:w-44 bg-none hover:bg-none`}
           >
-            <ul className="list-none m-0 bg-none">
+            <ul className="flex flex-col gap-1 justify-start text-left">
               <li onClick={() => setIsOpen(!open)}>
                 <NavLink to="/addService">Add Service</NavLink>
               </li>
@@ -96,12 +100,49 @@ const Navbar = () => {
       </button>
     </>
   );
+
+  // handle sticky
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div>
-      <div className="navbar bg-base-100 max-w-7xl mx-auto py-4">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{
+        duration: 0.4,
+        ease: "easeOut",
+      }}
+      className={`w-full transition-all duration-500 ${
+        isSticky
+          ? "sticky top-0 z-50 bg-white shadow-md backdrop-blur-lg"
+          : "relative"
+      }`}
+    >
+      {/* navbar */}
+      <div
+        className={`navbar bg-base-100 max-w-7xl mx-auto py-4 transition-all duration-300 `}
+      >
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="lg:hidden">
+            <motion.div
+              tabIndex={0}
+              whileHover={{ scale: 1.1 }}
+              role="button"
+              className="lg:hidden mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -116,30 +157,37 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </div>
+            </motion.div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-4"
+              className="flex flex-col dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 md:w-44 p-2 shadow gap-4"
             >
               {menu}
             </ul>
           </div>
-          <div className="flex flex-row gap-2 items-center">
-            <img className="w-14 h-14" src={logo} alt="" />
-            <Link className="text-xl md:text-2xl font-bold">RepairMate</Link>
-          </div>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 *:*:bg-none gap-4">
-            {menu}
-          </ul>
+          <motion.div className="flex flex-row gap-2 items-center">
+            <img className="w-10 h-10 md:w-14 md:h-14" src={logo} alt="" />
+            <button
+              onClick={() => navigate("/")}
+              className="text-lg sm:text-xl md:text-2xl font-bold"
+            >
+              RepairMate
+            </button>
+          </motion.div>
         </div>
 
+        {/* navbar center */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="flex flex-row items-center px-1 gap-4">{menu}</ul>
+        </div>
+
+        {/* navbar end */}
         <div className="navbar-end">
           <div>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.2 }}
               onClick={handleTheme}
-              className="text-xl md:text-2xl flex items-center justify-center m-2 duration-1000"
+              className="text-lg sm:text-xl md:text-2xl flex items-center justify-center m-2 duration-1000"
             >
               {light ? (
                 <MdLightMode
@@ -159,28 +207,43 @@ const Navbar = () => {
                   }}
                 />
               )}
-            </button>
+            </motion.button>
           </div>
+          {/* user section */}
           {user ? (
-            <div className="flex items-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center"
+            >
               <img
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover bg-center bg-cover border-2 border-accent"
+                className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover bg-center bg-cover border-2 border-accent"
                 src={user?.photoURL ? user.photoURL : userImage}
                 alt=""
                 referrerPolicy="no-referrer"
               />
-              <button onClick={handleLogout} className="btn">
-                Logout
+              <button
+                onClick={handleLogout}
+                className="p-2 sm:py-1 md:py-2 sm:px-3 text-sm md:text-base rounded-lg bg-base-300 ml-2"
+              >
+                <span className="hidden sm:flex">Logout</span>{" "}
+                <span className="sm:hidden">
+                  {" "}
+                  <IoMdLogOut />{" "}
+                </span>
               </button>
-            </div>
+            </motion.div>
           ) : (
-            <Link to="/login" className="btn">
-              Login
+            <Link to="/login">
+              <motion.button className="btn btn-primary btn-sm md:btn-md">
+                Login
+              </motion.button>
             </Link>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
