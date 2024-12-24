@@ -1,7 +1,9 @@
+import { PropagateLoader } from "react-spinners";
+
 const Loader = () => {
   return (
-    <div>
-      <h1>Loader</h1>
+    <div className="h-[40vh] flex justify-center items-center">
+      <PropagateLoader />
     </div>
   );
 };

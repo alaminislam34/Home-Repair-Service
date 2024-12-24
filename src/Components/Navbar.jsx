@@ -8,7 +8,7 @@ import { motion } from "motion/react";
 import "../../src/index.css";
 import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
-  const { user, handleLogout, id } = useContext(AuthContext);
+  const { user, handleLogout, id, setTheme } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [light, setLight] = useState(true);
   const location = useLocation();
@@ -70,7 +70,7 @@ const Navbar = () => {
       </li>{" "}
       <button
         onClick={handleDropdown}
-        className="relative z-40 font-medium rounded-lg px-2"
+        className="relative z-50 font-medium rounded-lg px-2"
       >
         <span className="hover:text-red-500">Dashboard</span>
         {isOpen ? (
@@ -118,14 +118,10 @@ const Navbar = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{
-        duration: 0.4,
-        ease: "easeOut",
-      }}
-      className={`w-full transition-all duration-500 ${
+      data-aos="zoom-in-down"
+      data-aos-delay="500"
+      data-aos-duration="2000"
+      className={`w-full transition-all duration-500 z-50 ${
         isSticky
           ? "sticky top-0 z-50 bg-white shadow-md backdrop-blur-lg"
           : "relative"
@@ -193,17 +189,14 @@ const Navbar = () => {
                 <MdLightMode
                   className="hover:scale-105"
                   onClick={() => {
-                    document.documentElement.setAttribute("data-theme", "dark");
+                    setTheme("dark");
                   }}
                 />
               ) : (
                 <MdDarkMode
                   className="hover:scale-105"
                   onClick={() => {
-                    document.documentElement.setAttribute(
-                      "data-theme",
-                      "light"
-                    );
+                    setTheme("light");
                   }}
                 />
               )}

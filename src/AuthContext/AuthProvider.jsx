@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
   const [services, setServices] = useState([]);
   const [error, setError] = useState(null);
   const [id, setId] = useState("");
+  const [theme, setTheme] = useState("light");
 
   // on auth state change handle
   useEffect(() => {
@@ -44,6 +45,14 @@ const AuthProvider = ({ children }) => {
     });
     return () => subscribe;
   }, []);
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  }, [theme]);
 
   // handle logout user
   const handleLogout = () => {
@@ -89,6 +98,8 @@ const AuthProvider = ({ children }) => {
     setServices,
     id,
     setId,
+    theme,
+    setTheme,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };
