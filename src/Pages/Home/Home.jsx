@@ -52,6 +52,7 @@ const Home = () => {
                     className="w-14 h-14 rounded-full object-cover bg-center border-2 border-accent"
                     src={service?.provider.photoURL}
                     alt=""
+                    referrerPolicy="no-referrer"
                   />
                   <h4>{service?.provider.name}</h4>
                 </div>

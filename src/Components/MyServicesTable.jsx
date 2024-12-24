@@ -2,12 +2,16 @@ import { FaPen } from "react-icons/fa";
 import { motion } from "motion/react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const MyServicesCard = ({ service }) => {
+  const { user } = useContext(AuthContext);
   const { myServices, setMyServices } = service;
   const [loading, setLoading] = useState(false);
+  const [id, setId] = useState("");
   console.log(myServices);
 
   const cardVariants = {
@@ -18,6 +22,21 @@ const MyServicesCard = ({ service }) => {
       transition: { delay: index * 0.1 },
     }),
   };
+
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      serviceImgURL: "",
+      serviceName: "",
+      serviceArea: "",
+      servicePrice: 0,
+      description: "",
+    },
+  });
 
   // handle delete service
   const handleDeleteService = (id) => {
@@ -33,7 +52,7 @@ const MyServicesCard = ({ service }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/deleteService/${id}`)
+          .delete(`${import.meta.env.VITE_URL}/deleteService/${id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
@@ -62,6 +81,28 @@ const MyServicesCard = ({ service }) => {
         setLoading(false); // End loading if the user cancels the action
       }
     });
+  };
+
+  // handleUpdatedService
+  const updateService = (e) => {
+    const service = e;
+    const { displayName: name, email, photoURL } = user;
+    const provider = { name, email, photoURL, service };
+    axios
+      .put(
+        `${import.meta.env.VITE_URL}/updateService/${id}`,
+        { provider },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -110,7 +151,13 @@ const MyServicesCard = ({ service }) => {
                     {s?.provider.service.servicePrice} ৳
                   </p>
                   <div className="mt-4 flex justify-between">
-                    <button className="btn btn-outline btn-xs flex items-center gap-1">
+                    <button
+                      onClick={() => {
+                        document.getElementById("my_modal_5").showModal();
+                        setId(s?._id);
+                      }}
+                      className="btn btn-outline btn-xs flex items-center gap-1"
+                    >
                       <FaPen /> Edit
                     </button>
                     <button
@@ -124,6 +171,116 @@ const MyServicesCard = ({ service }) => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+          <dialog
+            id="my_modal_5"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <form
+                onSubmit={handleSubmit(updateService)}
+                className="flex flex-col p-4 md:p-6 rounded-lg gap-2 border shadow-xl"
+              >
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-2 md:my-4 text-center">
+                  Add Service
+                </h3>
+                {/* Services image url */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="imageURL">Image URL</label>
+                  <input
+                    className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border"
+                    type="text"
+                    {...register("serviceImgURL", {
+                      required: "Service image is required",
+                    })}
+                  />
+                  {errors?.serviceImgURL ? (
+                    <small>{errors.serviceImgURL.message}</small>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {/* Service name */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="imageURL">Service Name</label>
+                  <input
+                    className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border"
+                    type="text"
+                    {...register("serviceName", {
+                      required: "Service name is required",
+                    })}
+                  />
+                  {errors?.serviceName ? (
+                    <small>{errors.serviceName.message}</small>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {/* Service are */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="imageURL">Service Area</label>
+                  <input
+                    className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border"
+                    type="text"
+                    {...register("serviceArea", {
+                      required: "Service area is required",
+                    })}
+                  />
+                  {errors?.serviceArea ? (
+                    <small>{errors.serviceArea.message}</small>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {/* Service price */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="servicePrice">Service Price</label>
+                  <input
+                    className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border"
+                    type="number"
+                    {...register("servicePrice", {
+                      required: "Service Price is required",
+                      valueAsNumber: true,
+                    })}
+                  />
+                  {errors?.servicePrice ? (
+                    <small>{errors.servicePrice.message}</small>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                {/* service description */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="service description">
+                    Service Description
+                  </label>
+                  <input
+                    className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border"
+                    type="text"
+                    {...register("description", {
+                      required: "Service description is required",
+                    })}
+                  />
+                  {errors?.description ? (
+                    <small>{errors.description.message}</small>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <button type="submit" className="btn w-full">
+                  {" "}
+                  Add Service
+                </button>
+              </form>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       )}
     </div>

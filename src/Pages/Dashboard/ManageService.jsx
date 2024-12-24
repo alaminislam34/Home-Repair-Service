@@ -10,7 +10,7 @@ const ManageService = () => {
   useEffect(() => {
     const email = user.email;
     axios
-      .get(`http://localhost:5000/allServices?email=${email}`, {
+      .get(`${import.meta.env.VITE_URL}/allServices?email=${email}`, {
         withCredentials: true,
       })
       .then((res) => {

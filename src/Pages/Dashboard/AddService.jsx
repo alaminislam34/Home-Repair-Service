@@ -27,24 +27,26 @@ const AddService = () => {
     const { displayName: name, email, photoURL } = user;
     const provider = { name, email, photoURL, service };
 
-    axios.post("http://localhost:5000/addService", { provider }).then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          title: "Success",
-          text: "Service Added Successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
-        reset();
-      } else {
-        Swal.fire({
-          title: "Ops",
-          text: "Service Added Failed",
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-      }
-    });
+    axios
+      .post(`${import.meta.env.VITE_URL}/addService`, { provider })
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Service Added Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          reset();
+        } else {
+          Swal.fire({
+            title: "Ops",
+            text: "Service Added Failed",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
+        }
+      });
   };
   return (
     <div className="flex justify-center items-center">

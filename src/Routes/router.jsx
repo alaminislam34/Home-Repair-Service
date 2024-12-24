@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         ),
         loader: async ({ params }) => {
           const res = await axios.get(
-            `http://localhost:5000/serviceDetails/${params.id}`
+            `${import.meta.env.VITE_URL}/serviceDetails/${params.id}`
           );
           return res.data;
         },

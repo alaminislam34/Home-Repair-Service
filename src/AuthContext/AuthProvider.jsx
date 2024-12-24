@@ -22,13 +22,19 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
         const email = { email: currentUser?.email };
         axios
-          .post("http://localhost:5000/jwt", email, { withCredentials: true })
+          .post(`${import.meta.env.VITE_URL}/jwt`, email, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            `${import.meta.env.VITE_URL}/logout`,
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log(res);
             setLoading(false);
@@ -62,7 +68,7 @@ const AuthProvider = ({ children }) => {
   // handle fetch services
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allServices`, { withCredentials: true })
+      .get(`${import.meta.env.VITE_URL}/allServices`, { withCredentials: true })
       .then((res) => {
         setServices(res.data);
         setLoader(false);
