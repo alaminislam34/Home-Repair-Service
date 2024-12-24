@@ -2,13 +2,14 @@ import { useContext } from "react";
 import banner1 from "../../assets/Banner/banner1.jpg";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import Loader from "../../Components/Loader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
   const { services, loader, setId } = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log(services);
   return (
     <div className="mb-32">
-      <div className="w-full relative mb-36">
+      <div className="w-full mb-36 relative">
         <div className="h-[350px] md:h-[400px] lg:h-[500px]">
           <img
             className="w-full h-full object-cover bg-center bg-no-repeat"
@@ -16,16 +17,23 @@ const Home = () => {
             alt=""
           />
         </div>
-        <div className="absolute -bottom-20 md:top-1/2 md:-translate-y-1/2 w-8/12 left-1/2 -translate-x-1/2 md:translate-x-0 md:w-2/5 lg:w-1/4 md:left-0 flex flex-col gap-1 text-center p-2 md:p-4 rounded-xl bg-base-300/50 backdrop-blur-md space-y-2">
-          <h2 className="text-base md:text-xl lg:text-2xl font-semibold">
-            Bangladesh`s One-Stop Solution for Renovation & Interior Design.
-          </h2>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg">
-            Explore Our Comprehensive Range of Services
-          </p>
-          <button className="py-2 px-4 bg-base-200 rounded duration-500 hover:-translate-x-1 hover:bg-green-400">
-            See All Services
-          </button>
+        <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center bg-transparent/40">
+          <div className="flex flex-col gap-2 md:gap-4 text-center text-wrap text-white px-4">
+            <h2 className="text-xl md:text-2xl lg:text-4xl font-bold lg:w-9/12 mx-auto">
+              Bangladesh`s One-Stop Solution for Renovation & Interior Design.
+            </h2>
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300">
+              Explore Our Comprehensive Range of Services
+            </p>
+            <div>
+              <button
+                onClick={() => navigate("/services")}
+                className="py-2 px-4 bg-base-200 rounded duration-500 hover:-translate-x-1 text-black hover:text-white hover:bg-green-500"
+              >
+                See All Services
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
@@ -52,7 +60,6 @@ const Home = () => {
                     className="w-14 h-14 rounded-full object-cover bg-center border-2 border-accent"
                     src={service?.provider.photoURL}
                     alt=""
-                    referrerPolicy="no-referrer"
                   />
                   <h4>{service?.provider.name}</h4>
                 </div>
