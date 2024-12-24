@@ -95,6 +95,7 @@ const AuthProvider = ({ children }) => {
     services,
     error,
     loader,
+    setLoader,
     setServices,
     id,
     setId,
