@@ -72,7 +72,7 @@ const Services = () => {
               key={service._id}
               className={`grid grid-cols-1 lg:grid-cols-5 shadow-xl hover:shadow-2xl overflow-hidden ${
                 theme === "light"
-                  ? "bg-gradient-to-br from-green-200 via-blue-200 to-purple-200"
+                  ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
               } rounded-lg hover:scale-105 transition-transform duration-500`}
             >

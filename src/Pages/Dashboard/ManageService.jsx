@@ -23,15 +23,17 @@ const ManageService = () => {
   }, [user]);
   return (
     <div>
-      <h1 className="flex items-end flex-row gap-2">
-        Manage Service{" "}
-        {loader ? (
-          <span className="loading loading-dots loading-xs"></span>
-        ) : (
-          myServices.length
-        )}
-      </h1>
-      <div>
+      <div className="flex justify-center items-center bg-servicePage bg-cover object-cover bg-center lg:bg-top bg-no-repeat  h-[200px] md:h-[250px] lg:h-[300px] mb-6 md:mb-8">
+        <div className="w-full h-full flex justify-center items-start bg-black/60 pt-4 md:pt-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center text-white">
+            <span className="border-b-2">Dashboard</span>
+            <br />
+            <br />
+            <span>Manage Services</span>
+          </h2>
+        </div>
+      </div>
+      <div className="border-t-2 mt-6 md:pt-8">
         {loader ? (
           <div className="w-full h-[50vh] flex justify-center items-center">
             <span className="loading loading-spinner loading-lg"></span>

@@ -5,10 +5,11 @@ import Swal from "sweetalert2";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../AuthContext/AuthProvider";
+import Loader from "./Loader";
 
 /* eslint-disable react/prop-types */
 const MyServicesCard = ({ service }) => {
-  const { user } = useContext(AuthContext);
+  const { user, theme } = useContext(AuthContext);
   const { myServices, setMyServices } = service;
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState("");
@@ -109,7 +110,7 @@ const MyServicesCard = ({ service }) => {
     <div>
       {loading ? (
         <div className="w-full h-[300px] flex justify-center items-center ">
-          <span className="loading loading-spinner loading-lg"></span>
+          <Loader />
         </div>
       ) : (
         <div className="p-4">
@@ -117,7 +118,7 @@ const MyServicesCard = ({ service }) => {
             initial="hidden"
             animate="visible"
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+            className="grid gap-4 md:gap-6 lg:gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-4 md:py-6"
           >
             {myServices?.map((s, index) => (
               <motion.div
@@ -128,7 +129,11 @@ const MyServicesCard = ({ service }) => {
                   scale: 1.03,
                   boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 }}
-                className="rounded-lg border bg-white shadow-md transition-all duration-300"
+                className={`rounded-xl ${
+                  theme === "light"
+                    ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
+                    : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
+                } shadow-md transition-all duration-300`}
               >
                 <div className="h-40 overflow-hidden rounded-t-lg">
                   <img
@@ -145,20 +150,21 @@ const MyServicesCard = ({ service }) => {
                     {s?.provider.service.serviceArea}
                   </p>
                   <p className="mt-2 text-sm text-gray-600">
-                    {s?.provider.service.description.slice(0, 50)}...
+                    {s?.provider.service.description.slice(0, 30)}...
                   </p>
                   <p className="mt-2 text-lg font-semibold text-green-600">
                     {s?.provider.service.servicePrice} ৳
                   </p>
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-between items-center">
                     <button
                       onClick={() => {
                         document.getElementById("my_modal_5").showModal();
                         setId(s?._id);
                       }}
-                      className="btn btn-outline btn-xs flex items-center gap-1"
+                      className="px-3 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
                     >
-                      <FaPen /> Edit
+                      Edit
+                      <FaPen />
                     </button>
                     <button
                       onClick={() => handleDeleteService(s?._id)}

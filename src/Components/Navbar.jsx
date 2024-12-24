@@ -190,7 +190,7 @@ const Navbar = () => {
             <img className="w-10 h-10 md:w-14 md:h-14" src={logo} alt="" />
             <button
               onClick={() => navigate("/")}
-              className="text-lg sm:text-xl md:text-2xl font-bold"
+              className="text-base sm:text-xl md:text-2xl font-bold"
             >
               RepairMate
             </button>
@@ -207,16 +207,18 @@ const Navbar = () => {
           <div>
             <button
               onClick={handleTheme}
-              className="text-lg p-2 flex items-center justify-center m-2 hover:bg-base-300 rounded-lg"
+              className="text-lg flex items-center justify-center m-2 hover:bg-base-300 rounded-lg"
             >
               {light ? (
                 <MdLightMode
+                  className="w-full h-full"
                   onClick={() => {
                     setTheme("dark");
                   }}
                 />
               ) : (
                 <MdDarkMode
+                  className="w-full h-full"
                   onClick={() => {
                     setTheme("light");
                   }}
@@ -240,7 +242,7 @@ const Navbar = () => {
               />
               <button
                 onClick={handleLogout}
-                className="px-3 py-1.5 text-sm ml-2 border-gray-300 bg-gradient-to-l from-red-300 via-red-400 to-red-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                className="px-2 md:px-3 py-1.5 text-sm ml-2 border-gray-300 bg-gradient-to-l from-red-300 via-red-400 to-red-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
               >
                 <span className="hidden sm:flex">Logout</span>{" "}
                 <span className="sm:hidden">
