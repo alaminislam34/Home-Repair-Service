@@ -56,11 +56,8 @@ const Navbar = () => {
     }
   }, [location.pathname, id]);
 
-  // handle dashboard dropdown
-  // Dropdown ওপেন করার জন্য
   const handleDropdownOpen = () => setIsOpen(true);
 
-  // Dropdown ক্লোজ করার জন্য
   const handleDropdownClose = () => setIsOpen(false);
 
   const menu = (
@@ -75,20 +72,22 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
+      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+        <NavLink to="/aboutUs" className="text-sm md:text-base">
+          About Us
+        </NavLink>
+      </li>
       <div
         className="relative"
-        onMouseEnter={handleDropdownOpen} // Hover to open
-        onMouseLeave={handleDropdownClose} // Hover out to close
+        onMouseEnter={handleDropdownOpen}
+        onMouseLeave={handleDropdownClose}
       >
-        {/* Dropdown Button */}
         <button
-          onClick={() => setIsOpen(!isOpen)} // Toggle dropdown on click
+          onClick={() => setIsOpen(!isOpen)}
           className={`transition duration-500 hover:scale-105 hover:-translate-y-1.5 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)]  py-2 px-4 rounded-lg`}
         >
           Dashboard
         </button>
-
-        {/* Dropdown Content */}
         {isOpen && (
           <div
             className={`absolute left-0 w-48 md:w-52 rounded-lg shadow-lg z-50 ${
@@ -192,7 +191,7 @@ const Navbar = () => {
               onClick={() => navigate("/")}
               className="text-base sm:text-xl md:text-2xl font-bold"
             >
-              RepairMate
+              Repair<span className="text-blue-500">Mate</span>
             </button>
           </motion.div>
         </div>

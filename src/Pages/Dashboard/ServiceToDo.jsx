@@ -27,23 +27,25 @@ const ServiceToDo = () => {
   }, [user]);
   return (
     <div>
-      <h1 className="flex flex-row gap-1 items-end">
-        Service To Do{" "}
-        {loading ? (
-          <span className="loading-dots loading-sm"></span>
-        ) : (
-          bookedService.length
-        )}
-      </h1>
-      <div>
-        {bookedService.length > 0 ? (
-          <ServiceTodoTable service={{ bookedService }} />
-        ) : (
-          <div className="flex justify-center items-center text-xl">
-            No booked services available
-          </div>
-        )}
+      <div className="w-full h-full flex justify-center items-center my-4 md:my-6">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center">
+          Service To Do
+        </h2>
       </div>
+
+      {loading ? (
+        <loading />
+      ) : (
+        <div>
+          {bookedService.length > 0 ? (
+            <ServiceTodoTable service={{ bookedService }} />
+          ) : (
+            <div className="flex justify-center items-center text-xl">
+              No booked services available
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

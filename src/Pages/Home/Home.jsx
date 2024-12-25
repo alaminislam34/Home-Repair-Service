@@ -5,7 +5,6 @@ import Loader from "../../Components/Loader";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import TeamMembers from "../../Components/TeamMembers";
 import OurServices from "../../Components/OurServices";
 import OurClients from "../../Components/OurClients";
 
@@ -21,7 +20,7 @@ const Home = () => {
     });
   }, []);
   return (
-    <div className="mb-32">
+    <div className="mb-12 md:mb-20">
       <div className="w-full relative">
         <div className="h-[350px] md:h-[400px] lg:h-[500px]">
           <img
@@ -58,7 +57,7 @@ const Home = () => {
             >
               <button
                 onClick={() => navigate("/services")}
-                className="px-4 py-2 md:py-2.5 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                className="px-4 py-2 md:py-2.5 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
               >
                 See All Services
               </button>
@@ -71,7 +70,7 @@ const Home = () => {
         data-aos-duration="1500"
         className="mx-4 flex justify-center items-center"
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold border-b-2 border-primary inline-block py-2 mt-8 md:mt-12">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold border-b-2 border-blue-500 inline-block py-2 mt-8 md:mt-12">
           Our Popular Services
         </h2>
       </div>
@@ -132,7 +131,7 @@ const Home = () => {
                         setId(service._id);
                         navigate(`/serviceDetails/${service._id}`);
                       }}
-                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
                     >
                       View Details
                     </button>
@@ -156,14 +155,13 @@ const Home = () => {
       <div className="flex justify-center items-center mb-4">
         <button
           onClick={() => navigate("/services")}
-          className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+          className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
         >
           See All Services
         </button>
       </div>
       <br />
       <div className="">
-        <TeamMembers />
         <br />
         <OurServices />
         <br />

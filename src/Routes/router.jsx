@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import ServiceDetails from "../Components/ServiceDetails";
 import axios from "axios";
 import PageNotFound from "../Components/PageNotFound";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             <ServiceToDo />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
       },
       {
         path: "/*",

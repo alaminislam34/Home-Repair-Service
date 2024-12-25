@@ -9,14 +9,14 @@ import client8 from "../assets/Our clients/client8.jpg";
 
 const OurClients = () => {
   const clients = [
-    client1,
-    client2,
-    client3,
-    client4,
-    client5,
     client6,
-    client7,
+    client1,
+    client5,
+    client2,
     client8,
+    client3,
+    client7,
+    client4,
   ];
 
   const cloneSlides = [...clients, ...clients];
@@ -35,13 +35,13 @@ const OurClients = () => {
           </p>
         </div>
         <div
-          className="flex animate-scroll gap-4"
+          className="flex animate-scroll"
           style={{ animation: "scroll 20s linear infinite" }}
         >
           {cloneSlides.map((client, index) => (
             <div
               key={index}
-              className="slide flex-shrink-0 w-[200px] h-[100px] bg-white flex justify-center items-center p-2"
+              className="slide flex-shrink-0 w-[100px] md:w-[200px] h-[100px] flex justify-center items-center p-2"
             >
               <img
                 src={client}

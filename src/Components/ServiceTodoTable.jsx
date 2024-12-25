@@ -1,7 +1,10 @@
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const ServiceTodoTable = ({ service }) => {
+  const { theme } = useContext(AuthContext);
   const handleStatus = (e, id) => {
     const status = e.target.value;
 
@@ -19,16 +22,17 @@ const ServiceTodoTable = ({ service }) => {
 
   const { bookedService: booked } = service;
   return (
-    <div>
-      <div className="overflow-x-auto">
+    <div className="w-11/12 md:w-10/12 mx-auto">
+      <div className="overflow-x-auto rounded-lg">
         <table className="table">
-          {/* head */}
           <thead>
-            <tr>
-              <th>Service Image</th>
+            <tr
+              className={`${theme === "light" ? "bg-blue-400" : "bg-blue-600"}`}
+            >
+              <th>Service</th>
               <th>Name</th>
               <th>Status</th>
-              <th></th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody>
@@ -41,8 +45,8 @@ const ServiceTodoTable = ({ service }) => {
                     </div>
                   </div>
                 </td>
-                <td>{book?.serviceName}</td>
-                <td>
+                <td className="text-xs md:text-sm">{book?.serviceName}</td>
+                <td className="text-xs md:text-sm">
                   <select
                     defaultValue={"Pending"}
                     onChange={(e) => handleStatus(e, book._id)}
@@ -55,9 +59,9 @@ const ServiceTodoTable = ({ service }) => {
                     <option value={"Completed"}>Completed</option>
                   </select>
                 </td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <td className="text-green-500 font-semibold text-xs md:text-sm">
+                  {book?.price} ৳
+                </td>
               </tr>
             ))}
           </tbody>

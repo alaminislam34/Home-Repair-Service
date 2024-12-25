@@ -10,6 +10,8 @@ const Services = () => {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
+  console.log(services);
+
   // search data handle
   const handleSearch = (e) => {
     e.preventDefault();
@@ -19,8 +21,9 @@ const Services = () => {
         withCredentials: true,
       })
       .then((res) => {
-        setLoader(false);
+        console.log(res.data);
         setServices(res.data);
+        setLoader(false);
       })
       .catch(() => {
         setLoader(false);
@@ -42,7 +45,7 @@ const Services = () => {
             className="flex flex-row justify-center items-center border-b-2 border-base-300 p-4 rounded-lg"
           >
             <input
-              className="border border-primary focus:border-primary outline-none rounded-l-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border border-blue-400 focus:border-blue- outline-none rounded-l-lg py-1.5 px-3 md:py-2 md:px-4"
               type="text"
               name="search"
               onChange={(v) => setValue(v.target.value)}
@@ -50,21 +53,20 @@ const Services = () => {
               placeholder="Search service"
             />
             <input
-              className="border border-base-300 cursor-pointer bg-primary text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4"
               type="submit"
               value="Search"
             />
           </form>
         </div>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 my-6 md:my-8 lg:my-12 m-4">
         {loader ? (
           <div className="md:col-span-2">
             <Loader />
           </div>
         ) : services.length > 0 ? (
-          services?.map((service, i) => (
+          services.map((service, i) => (
             <div
               data-aos="fade-up"
               data-aos-duration="1200"
@@ -79,7 +81,7 @@ const Services = () => {
               <div className="lg:col-span-3 overflow-hidden">
                 <img
                   className="aspect-video object-cover bg-center bg-cover bg-no-repeat hover:scale-105 transition-transform duration-500  w-full h-full"
-                  src={service.provider.service.serviceImgURL}
+                  src={service?.provider.service.serviceImgURL}
                   alt=""
                 />
               </div>
@@ -87,14 +89,14 @@ const Services = () => {
                 <div>
                   {/* service name */}
                   <h2 className="text-base md:text-lg lg:text-xl font-semibold">
-                    {service.provider.service.serviceName}
+                    {service?.provider.service.serviceName}
                   </h2>
                   {/* service description */}
                   <p className="text-sm md:text-[15px] text-gray-500">
-                    {service.provider.service.description.slice(0, 80)}
+                    {service?.provider.service.description.slice(0, 80)}
                   </p>
                   <p className="text-green-600 font-semibold">
-                    {service.provider.service.servicePrice} ৳
+                    {service?.provider.service.servicePrice} ৳
                   </p>
                 </div>
                 <div>
@@ -103,10 +105,10 @@ const Services = () => {
                   <div className="flex flex-row gap-4 items-center mt-2">
                     <img
                       className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-accent"
-                      src={service.provider.photoURL}
+                      src={service?.provider.photoURL}
                       alt=""
                     />
-                    <h4>{service.provider.name}</h4>
+                    <h4>{service?.provider.name}</h4>
                   </div>
 
                   <div className="my-2">
@@ -135,7 +137,8 @@ const Services = () => {
             No Service Available
           </div>
         )}
-      </div>
+      </div>{" "}
+      .+.3 .
     </div>
   );
 };
