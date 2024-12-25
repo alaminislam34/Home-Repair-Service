@@ -7,6 +7,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import TeamMembers from "../../Components/TeamMembers";
 import OurServices from "../../Components/OurServices";
+import OurClients from "../../Components/OurClients";
 
 const Home = () => {
   const { services, loader, setId, theme } = useContext(AuthContext);
@@ -165,6 +166,8 @@ const Home = () => {
         <TeamMembers />
         <br />
         <OurServices />
+        <br />
+        <OurClients />
       </div>
     </div>
   );

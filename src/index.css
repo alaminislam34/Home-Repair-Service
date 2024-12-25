@@ -26,3 +26,12 @@ a.active {
   color: #1b3bf1;
   font-weight: bold;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
