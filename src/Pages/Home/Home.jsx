@@ -5,6 +5,8 @@ import Loader from "../../Components/Loader";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import TeamMembers from "../../Components/TeamMembers";
+import OurServices from "../../Components/OurServices";
 
 const Home = () => {
   const { services, loader, setId, theme } = useContext(AuthContext);
@@ -19,7 +21,7 @@ const Home = () => {
   }, []);
   return (
     <div className="mb-32">
-      <div className="w-full mb-12 relative">
+      <div className="w-full relative">
         <div className="h-[350px] md:h-[400px] lg:h-[500px]">
           <img
             className="w-full h-full object-cover bg-center bg-no-repeat"
@@ -68,17 +70,17 @@ const Home = () => {
         data-aos-duration="1500"
         className="mx-4 flex justify-center items-center"
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold border-b-2 border-primary inline-block py-2">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold border-b-2 border-primary inline-block py-2 mt-8 md:mt-12">
           Our Popular Services
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 lg:gap-6 my-8 md:my-12 mx-4 border-t-2 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 lg:gap-6 my-6 mx-4 border-t-2 py-8">
         {loader ? (
           <div className="md:col-span-2">
             <Loader />
           </div>
         ) : services.length > 0 ? (
-          services.slice(0, 6).map((service, i) => (
+          services?.slice(0, 6).map((service, i) => (
             <div
               data-aos="fade-up"
               data-aos-duration="1200"
@@ -140,7 +142,7 @@ const Home = () => {
           ))
         ) : (
           <div
-            data-aos="fade-up"
+            data-aos="zoom-in-down"
             data-aos-delay="900"
             data-aos-duration="1100"
             data-aos-easing="ease-in-out"
@@ -150,13 +152,19 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className="flex justify-center items-center my-4">
+      <div className="flex justify-center items-center mb-4">
         <button
           onClick={() => navigate("/services")}
           className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
         >
           See All Services
         </button>
+      </div>
+      <br />
+      <div className="">
+        <TeamMembers />
+        <br />
+        <OurServices />
       </div>
     </div>
   );

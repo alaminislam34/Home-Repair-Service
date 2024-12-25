@@ -161,14 +161,15 @@ const MyServicesCard = ({ service }) => {
                         document.getElementById("my_modal_5").showModal();
                         setId(s?._id);
                       }}
-                      className="px-3 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
+                      className="px-3 py-2 text-sm border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
                     >
                       Edit
                       <FaPen />
                     </button>
                     <button
                       onClick={() => handleDeleteService(s?._id)}
-                      className="btn btn-outline btn-xs text-red-500"
+                      data-tip="Delete"
+                      className="btn btn-outline btn-xs text-red-500 border-none bg-base-100 hover:bg-gradient-to-t from-red-400 to-red-500 tooltip tooltip-top"
                     >
                       X
                     </button>
