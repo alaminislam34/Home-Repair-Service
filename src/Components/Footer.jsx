@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { MdHome, MdOutgoingMail, MdWhatsapp } from "react-icons/md";
 import logo from "../assets/logos/Blogo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -49,16 +50,24 @@ const Footer = () => {
         <div className="flex flex-col justify-start gap-3 list-none">
           <h6 className="text-lg md:text-xl font-medium">Use Links</h6>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Home</p>
+            <Link to="/" className="inline-block hover:underline">
+              Home
+            </Link>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Services</p>
+            <Link to="/services" className="inline-block hover:underline">
+              Services
+            </Link>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">About Us</p>
+            <Link to="/aboutUs" className="inline-block hover:underline">
+              About Us
+            </Link>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Manage Services</p>
+            <Link to="/manageService" className="inline-block hover:underline">
+              Manage Services
+            </Link>
           </li>
         </div>
         <div className="flex flex-col justify-start gap-3 list-none">

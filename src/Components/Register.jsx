@@ -25,12 +25,17 @@ const Register = () => {
     },
   });
   const handleRegister = (e) => {
-    const form = e;
     const email = e.email;
     const password = e.password;
     const name = e.name;
     const photoURL = e.photoURL;
-    console.table(form);
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (regex.test(password)) {
+      console.log("hoiche");
+    } else {
+      console.log("hoynai");
+    }
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         updateProfile(auth.currentUser, {

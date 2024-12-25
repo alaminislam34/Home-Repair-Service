@@ -36,7 +36,7 @@ const BookedService = () => {
           </h2>
         </div>
       </div>
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full min-h-80">
         {booked ? (
           <BookedServiceTable service={{ booked }} />
         ) : (
