@@ -1,17 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Components/Loader";
 
 const Services = () => {
-  const { services, setServices, setId, loader, setLoader, theme } =
-    useContext(AuthContext);
+  const { setId, loader, setLoader, theme } = useContext(AuthContext);
   const [value, setValue] = useState("");
+  const [allService, setServices] = useState([]);
   const navigate = useNavigate();
 
-  console.log(services);
+  console.log(allService);
 
+  useEffect(() => {
+    setLoader(true);
+    axios
+      .get(`${import.meta.env.VITE_URL}/allServices`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setLoader(false);
+        setServices(res.data);
+        console.log(res.data);
+      })
+      .catch(() => {
+        setLoader(false);
+      });
+  }, []);
   // search data handle
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,7 +36,6 @@ const Services = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
         setServices(res.data);
         setLoader(false);
       })
@@ -39,13 +53,13 @@ const Services = () => {
             </h2>
           </div>
         </div>
-        <div className="w-full py-4 px-4">
+        <div className="w-11/12 mx-auto py-4 px-4">
           <form
             onSubmit={handleSearch}
             className="flex flex-row justify-center items-center border-b-2 border-base-300 p-4 rounded-lg"
           >
             <input
-              className="border border-blue-400 focus:border-blue- outline-none rounded-l-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border border-blue-400 focus:border-blue- outline-none rounded-l-lg py-1.5 px-3 md:py-2 text-sm md:text-base"
               type="text"
               name="search"
               onChange={(v) => setValue(v.target.value)}
@@ -53,7 +67,7 @@ const Services = () => {
               placeholder="Search service"
             />
             <input
-              className="border border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4"
+              className="border hover:scale-105 duration-500 overflow-hidden hover:shadow-xl border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4 "
               type="submit"
               value="Search"
             />
@@ -65,18 +79,18 @@ const Services = () => {
           <div className="md:col-span-2">
             <Loader />
           </div>
-        ) : services.length > 0 ? (
-          services.map((service, i) => (
+        ) : allService.length > 0 ? (
+          allService?.map((service, i) => (
             <div
-              data-aos="fade-up"
-              data-aos-duration="1200"
-              data-aos-delay={`${i + 400}`}
+              // data-aos="zoom-in"
+              // data-aos-duration="1000"
+              // data-aos-delay={`${i + 150}`}
               key={service._id}
               className={`grid grid-cols-1 lg:grid-cols-5 shadow-xl hover:shadow-2xl overflow-hidden ${
                 theme === "light"
                   ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
-              } rounded-lg hover:scale-105 transition-transform duration-500`}
+              } rounded-lg transition-transform duration-500`}
             >
               <div className="lg:col-span-3 overflow-hidden">
                 <img
@@ -106,7 +120,7 @@ const Services = () => {
                     <img
                       className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-accent"
                       src={service?.provider.photoURL}
-                      alt=""
+                      referrerPolicy="no-referrer"
                     />
                     <h4>{service?.provider.name}</h4>
                   </div>
@@ -127,18 +141,11 @@ const Services = () => {
             </div>
           ))
         ) : (
-          <div
-            data-aos="fade-up"
-            data-aos-delay="900"
-            data-aos-duration="1100"
-            data-aos-easing="ease-in-out"
-            className="w-full h-[200px] flex justify-center items-center text-xl md:text-2xl lg:text-3xl font-semibold md:col-span-2"
-          >
+          <div className="w-full h-[200px] flex justify-center items-center text-xl md:text-2xl lg:text-3xl font-semibold md:col-span-2">
             No Service Available
           </div>
         )}
       </div>{" "}
-      .+.3 .
     </div>
   );
 };

@@ -50,6 +50,9 @@ const Navbar = () => {
       case `/serviceToDo`:
         document.title = "Service To Do";
         break;
+      case `/aboutUs`:
+        document.title = "About Us";
+        break;
       case `/*`:
         document.title = "Page Not Founded";
         break;
@@ -153,7 +156,7 @@ const Navbar = () => {
     >
       {/* navbar */}
       <div
-        className={`navbar max-w-7xl mx-auto py-4 transition-all duration-300 `}
+        className={`navbar max-w-7xl mx-auto py-4 px-4 transition-all duration-300 `}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -185,7 +188,7 @@ const Navbar = () => {
               {menu}
             </ul>
           </div>
-          <motion.div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row gap-2 items-center">
             <img className="w-10 h-10 md:w-14 md:h-14" src={logo} alt="" />
             <button
               onClick={() => navigate("/")}
@@ -193,7 +196,7 @@ const Navbar = () => {
             >
               Repair<span className="text-blue-500">Mate</span>
             </button>
-          </motion.div>
+          </div>
         </div>
 
         {/* navbar center */}

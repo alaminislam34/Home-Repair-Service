@@ -24,7 +24,7 @@ const ServiceTodoTable = ({ service }) => {
   return (
     <div className="w-11/12 md:w-10/12 mx-auto">
       <div className="overflow-x-auto rounded-lg">
-        <table className="table">
+        <table className="table text-center">
           <thead>
             <tr
               className={`${theme === "light" ? "bg-blue-400" : "bg-blue-600"}`}
@@ -51,6 +51,7 @@ const ServiceTodoTable = ({ service }) => {
                     defaultValue={"Pending"}
                     onChange={(e) => handleStatus(e, book._id)}
                     name="status"
+                    className="py-1 px-1"
                   >
                     <option value={"Pending"} selected>
                       Pending

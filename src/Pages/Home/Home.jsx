@@ -29,7 +29,7 @@ const Home = () => {
             alt=""
           />
         </div>
-        <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center bg-transparent/50">
+        <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center bg-transparent/60">
           <div className="flex flex-col gap-2 md:gap-4 text-center text-wrap text-white px-4">
             <h2
               data-aos="fade-up"
@@ -82,15 +82,15 @@ const Home = () => {
         ) : services.length > 0 ? (
           services?.slice(0, 6).map((service, i) => (
             <div
-              data-aos="fade-up"
-              data-aos-duration="1200"
-              data-aos-delay={`${i + 400}`}
+              // data-aos="fade-up"
+              // data-aos-duration="1200"
+              // data-aos-delay={`${i + 400}`}
               key={service._id}
               className={`grid grid-cols-1 lg:grid-cols-5 shadow-xl hover:shadow-2xl overflow-hidden ${
                 theme === "light"
                   ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
-              } rounded-lg hover:scale-105 transition-transform duration-500`}
+              } rounded-lg transition-transform duration-500`}
             >
               <div className="lg:col-span-3 overflow-hidden">
                 <img
@@ -120,7 +120,7 @@ const Home = () => {
                     <img
                       className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-accent"
                       src={service?.provider.photoURL}
-                      alt=""
+                      referrerPolicy="no-referrer"
                     />
                     <h4>{service?.provider.name}</h4>
                   </div>
@@ -141,13 +141,7 @@ const Home = () => {
             </div>
           ))
         ) : (
-          <div
-            data-aos="zoom-in-down"
-            data-aos-delay="900"
-            data-aos-duration="1100"
-            data-aos-easing="ease-in-out"
-            className="w-full h-[200px] flex justify-center items-center text-xl md:text-2xl lg:text-3xl font-semibold md:col-span-2"
-          >
+          <div className="w-full h-[200px] flex justify-center items-center text-xl md:text-2xl lg:text-3xl font-semibold md:col-span-2">
             No Service Available
           </div>
         )}
