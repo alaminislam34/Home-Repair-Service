@@ -63,86 +63,94 @@ const AddService = () => {
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4 text-center text-blue-500">
           Add Service
         </h3>
-        {/* Services image url */}
-        <div className="flex flex-col gap-1">
-          <label className="text-base md:text-lg" htmlFor="imageURL">
-            Image URL
-          </label>
-          <input
-            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border-2 focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
-            type="text"
-            {...register("serviceImgURL", {
-              required: "Service image is required",
-            })}
-          />
-          {errors?.serviceImgURL ? (
-            <small className="text-red-500 py-0.5">
-              {errors.serviceImgURL.message}
-            </small>
-          ) : (
-            ""
-          )}
+        <div className="flex flex-col md:flex-row gap-4">
+          {/* Services image url */}
+          <div className="flex flex-col gap-1 w-full">
+            <label className="text-base md:text-lg" htmlFor="imageURL">
+              Image URL
+            </label>
+            <input
+              className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
+              type="text"
+              {...register("serviceImgURL", {
+                required: "Service image is required",
+              })}
+            />
+            {errors?.serviceImgURL ? (
+              <small className="text-red-500 py-0.5">
+                {errors.serviceImgURL.message}
+              </small>
+            ) : (
+              ""
+            )}
+          </div>
+          {/* Service name */}
+          <div className="flex flex-col gap-1 w-full">
+            <label className="text-base md:text-lg" htmlFor="imageURL">
+              Service Name
+            </label>
+            <input
+              className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
+              type="text"
+              {...register("serviceName", {
+                required: "Service name is required",
+              })}
+            />
+            {errors?.serviceName ? (
+              <small className="text-red-500 py-0.5">
+                {errors.serviceName.message}
+              </small>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
-        {/* Service name */}
-        <div className="flex flex-col gap-1">
-          <label className="text-base md:text-lg" htmlFor="imageURL">
-            Service Name
-          </label>
-          <input
-            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border-2 focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
-            type="text"
-            {...register("serviceName", {
-              required: "Service name is required",
-            })}
-          />
-          {errors?.serviceName ? (
-            <small className="text-red-500 py-0.5">
-              {errors.serviceName.message}
-            </small>
-          ) : (
-            ""
-          )}
-        </div>
-        {/* Service are */}
-        <div className="flex flex-col gap-1">
-          <label className="text-base md:text-lg" htmlFor="imageURL">
-            Service Area
-          </label>
-          <input
-            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border-2 focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
-            type="text"
-            {...register("serviceArea", {
-              required: "Service area is required",
-            })}
-          />
-          {errors?.serviceArea ? (
-            <small className="text-red-500 py-0.5">
-              {errors.serviceArea.message}
-            </small>
-          ) : (
-            ""
-          )}
-        </div>
-        {/* Service price */}
-        <div className="flex flex-col gap-1">
-          <label className="text-base md:text-lg" htmlFor="servicePrice">
-            Service Price
-          </label>
-          <input
-            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border-2 focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
-            type="number"
-            {...register("servicePrice", {
-              required: "Service Price is required",
-              valueAsNumber: true,
-            })}
-          />
-          {errors?.servicePrice ? (
-            <small className="text-red-500 py-0.5">
-              {errors.servicePrice.message}
-            </small>
-          ) : (
-            ""
-          )}
+        <div className="flex flex-col md:flex-row gap-4 w-full">
+          {/* Service are */}
+          <div className="flex flex-col gap-1 w-full">
+            <label className="text-base md:text-lg" htmlFor="imageURL">
+              Service Area
+            </label>
+            <input
+              className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
+              type="text"
+              {...register("serviceArea", {
+                required: "Service area is required",
+              })}
+            />
+            {errors?.serviceArea ? (
+              <small className="text-red-500 py-0.5">
+                {errors.serviceArea.message}
+              </small>
+            ) : (
+              ""
+            )}
+          </div>
+          {/* Service price */}
+          <div className="flex flex-col gap-1 w-full">
+            <label className="text-base md:text-lg" htmlFor="servicePrice">
+              Service Price
+            </label>
+            <input
+              className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
+              type="number"
+              {...register("servicePrice", {
+                required: "Service Price is required",
+                min: {
+                  value: 50,
+                  message: "Minimum price 50",
+                },
+                valueAsNumber: true,
+              })}
+            />
+            {errors?.servicePrice ? (
+              <small className="text-red-500 py-0.5">
+                {errors.servicePrice.message}
+              </small>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         {/* service description */}
         <div className="flex flex-col gap-1">
@@ -150,7 +158,7 @@ const AddService = () => {
             Service Description
           </label>
           <input
-            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border-2 focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
+            className="py-1.5 md:py-2 px-3 md:px-4 rounded-lg border focus:border-blue-400 outline-none text-sm md:text-base bg-transparent"
             type="text"
             {...register("description", {
               required: "Service description is required",
