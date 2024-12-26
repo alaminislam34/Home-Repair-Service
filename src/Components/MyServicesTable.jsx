@@ -98,8 +98,13 @@ const MyServicesCard = ({ service }) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        document.getElementById("my_modal_5").close();
         reset();
+        Swal.fire({
+          title: "Success",
+          text: "Service Updated Successfully",
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -190,7 +195,7 @@ const MyServicesCard = ({ service }) => {
                 className="flex flex-col p-4 md:p-6 rounded-lg gap-2 border shadow-xl"
               >
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold my-2 md:my-4 text-center">
-                  Add Service
+                  Update Service
                 </h3>
                 {/* Services image url */}
                 <div className="flex flex-col gap-1">
@@ -277,7 +282,7 @@ const MyServicesCard = ({ service }) => {
                 </div>
                 <button type="submit" className="btn w-full">
                   {" "}
-                  Add Service
+                  Update
                 </button>
               </form>
               <div className="modal-action">

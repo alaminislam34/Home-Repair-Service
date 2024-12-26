@@ -124,6 +124,12 @@ const Navbar = () => {
               >
                 <NavLink to="/serviceToDo">Service ToDo</NavLink>
               </li>
+              <li
+                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                onClick={() => setIsOpen(false)}
+              >
+                <NavLink to="/appointment">Appointment</NavLink>
+              </li>
             </ul>
           </div>
         )}

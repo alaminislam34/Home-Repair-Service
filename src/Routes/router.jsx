@@ -13,6 +13,7 @@ import ServiceDetails from "../Components/ServiceDetails";
 import axios from "axios";
 import PageNotFound from "../Components/PageNotFound";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import AppointmentLetter from "../Pages/Dashboard/AppointmentLetter";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
             <ServiceToDo />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/appointment",
+        element: <AppointmentLetter />,
       },
       {
         path: "/aboutUs",

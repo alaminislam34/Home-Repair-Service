@@ -18,7 +18,7 @@ const OurServices = () => {
           household need.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-center my-8 md:my-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-center my-8 md:my-12 mx-4">
         <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <GiPaintBucket className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />

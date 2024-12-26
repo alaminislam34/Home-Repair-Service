@@ -67,24 +67,28 @@ const Services = () => {
             </h2>
           </div>
         </div>
-        <div className="w-11/12 mx-auto py-4 px-4">
+        <div className="w-10/12 mx-auto py-4">
           <form
             onSubmit={handleSearch}
             className="flex flex-row justify-center items-center border-b-2 border-base-300 p-4 rounded-lg"
           >
-            <input
-              className="border border-blue-400 focus:border-blue- outline-none rounded-l-lg py-1.5 px-3 md:py-2 text-sm md:text-base"
-              type="text"
-              name="search"
-              onChange={(v) => setValue(v.target.value)}
-              value={value}
-              placeholder="Search service"
-            />
-            <input
-              className="border hover:scale-105 duration-500 overflow-hidden hover:shadow-xl border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4 "
-              type="submit"
-              value="Search"
-            />
+            <div className="">
+              <input
+                className="border border-blue-400 focus:border-blue- outline-none rounded-l-lg py-1.5 px-3 md:py-2 text-sm md:text-base"
+                type="text"
+                name="search"
+                onChange={(v) => setValue(v.target.value)}
+                value={value}
+                placeholder="Search service"
+              />
+            </div>
+            <div className="">
+              <input
+                className="border hover:scale-105 duration-500 overflow-hidden hover:shadow-xl border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4 "
+                type="submit"
+                value="Search"
+              />
+            </div>
           </form>
         </div>
       </div>

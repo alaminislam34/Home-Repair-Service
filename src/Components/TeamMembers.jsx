@@ -33,7 +33,7 @@ const TeamMembers = () => {
           data-aos="zoom-in-up"
           data-aos-duration="1200"
           data-aos-delay="600"
-          className="bg-base-100 rounded-lg relative group overflow-hidden flex justify-center items-center px-4 pt-4"
+          className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden flex justify-center items-center px-4 pt-4"
         >
           <img src={member1} className="bg-center object-cover pt-4 px-4" />
           <div
@@ -46,7 +46,7 @@ const TeamMembers = () => {
             <h3 className="text-lg md:text-xl font-semibold">
               Franziska Schmitt{" "}
             </h3>
-            <p className="text-sm md:text-base text-gray-400">
+            <p className="text-sm md:text-base text-gray-500">
               {" "}
               Plumbing Engineer.
             </p>
@@ -62,7 +62,7 @@ const TeamMembers = () => {
           data-aos="zoom-in-up"
           data-aos-duration="1200"
           data-aos-delay="800"
-          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+          className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member2} className="bg-center object-cover pt-4 px-4" />
           <div
@@ -73,7 +73,7 @@ const TeamMembers = () => {
             } py-6 flex flex-col gap-2 justify-center items-center`}
           >
             <h3 className="text-lg md:text-xl font-semibold">Olivia</h3>
-            <p className="text-sm md:text-base text-gray-400">
+            <p className="text-sm md:text-base text-gray-500">
               Managing Director
             </p>
             <div className="flex flex-row justify-around items-center gap-4 text-xl hover:*:scale-110 *:cursor-pointer">
@@ -88,7 +88,7 @@ const TeamMembers = () => {
           data-aos="zoom-in-up"
           data-aos-duration="1200"
           data-aos-delay="1000"
-          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+          className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member3} className="bg-center object-cover pt-4 px-4" />
           <div
@@ -99,7 +99,7 @@ const TeamMembers = () => {
             } py-6 flex flex-col gap-2 justify-center items-center`}
           >
             <h3 className="text-lg md:text-xl font-semibold">Frankon Devid</h3>
-            <p className="text-sm md:text-base text-gray-400">Civil Engineer</p>
+            <p className="text-sm md:text-base text-gray-500">Civil Engineer</p>
             <div className="flex flex-row justify-around items-center gap-4 text-xl hover:*:scale-110 *:cursor-pointer">
               <FaFacebook />
               <FaInstagram />
@@ -112,7 +112,7 @@ const TeamMembers = () => {
           data-aos="zoom-in-up"
           data-aos-duration="1200"
           data-aos-delay="1200"
-          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+          className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member4} className="bg-center object-cover pt-4 px-4" />
           <div
@@ -123,7 +123,7 @@ const TeamMembers = () => {
             } py-6 flex flex-col gap-2 justify-center items-center`}
           >
             <h3 className="text-lg md:text-xl font-semibold">Evelyn </h3>
-            <p className="text-sm md:text-base text-gray-400">Architecture </p>
+            <p className="text-sm md:text-base text-gray-500">Architecture </p>
             <div className="flex flex-row justify-around items-center gap-4 text-xl hover:*:scale-110 *:cursor-pointer">
               <FaFacebook />
               <FaInstagram />
