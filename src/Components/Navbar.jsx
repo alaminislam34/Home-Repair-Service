@@ -207,19 +207,20 @@ const Navbar = () => {
         {/* navbar end */}
         <div className="navbar-end">
           <div>
+            {/* theme toggle icons */}
             <button
               onClick={handleTheme}
               className="text-lg flex items-center justify-center m-2 hover:bg-base-300 rounded-lg"
             >
               {light ? (
-                <MdLightMode
+                <MdDarkMode
                   className="w-full h-full"
                   onClick={() => {
                     setTheme("dark");
                   }}
                 />
               ) : (
-                <MdDarkMode
+                <MdLightMode
                   className="w-full h-full"
                   onClick={() => {
                     setTheme("light");
