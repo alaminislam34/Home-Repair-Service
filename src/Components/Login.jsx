@@ -19,8 +19,8 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     signInWithPopup(auth, googleProvider)
       .then((res) => {
-        setUser(res.user);
         navigate(location?.state ? location.state : "/");
+        setUser(res.user);
       })
       .catch(() => {});
   };
@@ -33,8 +33,7 @@ const Login = () => {
 
     console.table({ email, password });
     signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         Swal.fire({
           title: "Success!",
           text: "User Logged Successfully",

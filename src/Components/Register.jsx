@@ -1,13 +1,18 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
 
 const Register = () => {
-  const { handleSignUpWithGoogle, theme } = useContext(AuthContext);
+  const { theme, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -29,13 +34,7 @@ const Register = () => {
     const password = e.password;
     const name = e.name;
     const photoURL = e.photoURL;
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (regex.test(password)) {
-      console.log("hoiche");
-    } else {
-      console.log("hoynai");
-    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         updateProfile(auth.currentUser, {
@@ -64,6 +63,18 @@ const Register = () => {
       });
     reset();
   };
+
+  // google log in
+  const handleSignUpWithGoogle = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        navigate(location?.state ? location.state : "/");
+        setUser(res.user);
+      })
+      .catch(() => {});
+  };
+
   return (
     <div className="flex justify-center items-center min-h-[80vh] my-6 md:my-8">
       <form
@@ -116,16 +127,18 @@ const Register = () => {
             placeholder="Enter your password"
             className="input input-primary border-base-300 outline-none"
             {...register("password", {
-              required:
-                "Password must be at least 6 character one upperChase, one lowerChase or one special character",
+              required: "Password is required",
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
+                message:
+                  "Password must be at least 6 characters long, include one uppercase letter, one lowercase letter, and one number",
+              },
             })}
           />
-          {errors?.password ? (
-            <small className="text-red-500 text-left py-1">
-              {errors?.password.message}
+          {errors?.password && (
+            <small className="text-red-500 text-left py-1 text-wrap">
+              {errors.password.message}
             </small>
-          ) : (
-            ""
           )}
         </div>
         <div className="flex flex-col gap-1">
@@ -153,13 +166,7 @@ const Register = () => {
           Already have an account ? <Link to="/login">Login</Link>
         </p>
         <div className="flex justify-center items-center">
-          <button
-            onClick={() => {
-              handleSignUpWithGoogle,
-                navigate(location?.state ? location.state : "/");
-            }}
-            className="btn"
-          >
+          <button onClick={handleSignUpWithGoogle} className="btn">
             Continue with google
           </button>
         </div>

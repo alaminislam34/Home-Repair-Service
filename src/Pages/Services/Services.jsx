@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Components/Loader";
+import banner from "../../assets/Banner/banner1.jpg";
 
 const Services = () => {
   const { setId, loader, setLoader, theme } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const Services = () => {
   useEffect(() => {
     setLoader(true);
     axios
-      .get(`${import.meta.env.VITE_URL}/allServices`, {
+      .get(`${import.meta.env.VITE_URL}/publicServices`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -46,7 +47,10 @@ const Services = () => {
   return (
     <div>
       <div>
-        <div className="flex justify-center items-center bg-servicePage bg-cover object-cover bg-center lg:bg-top bg-no-repeat  h-[200px] md:h-[250px] lg:h-[300px]">
+        <div
+          style={{ backgroundImage: `url(${banner})` }}
+          className="flex justify-center items-center bg-cover object-cover bg-center lg:bg-top bg-no-repeat  h-[200px] md:h-[250px] lg:h-[300px]"
+        >
           <div className="w-full h-full flex justify-center items-center bg-black/60">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center text-gray-200">
               Our All Services

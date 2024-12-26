@@ -6,13 +6,13 @@ const Appointment = () => {
   return (
     <div className="flex justify-center items-center min-h-[400px] my-6">
       <div
-        className={`w-full max-w-4xl bg-gradient-to-tr ${
+        className={`w-full max-w-4xl ${
           theme === "light"
-            ? "from-blue-50 via-blue-100 to-blue-200"
-            : "from-gray-800 via-gray-900 to-black"
-        } rounded-lg shadow-lg p-8`}
+            ? "shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]"
+            : "shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)]"
+        } rounded-3xl p-8`}
       >
-        <div className="text-center mb-8 space-y-2">
+        <div className="text-center mb-8 space-y-2 md:space-y-4">
           <h2 className="text-3xl font-bold">FREE APPOINTMENT</h2>
           <p className="text-gray-500 text-sm md:text-base">
             Schedule your free appointment today for expert services. Connect

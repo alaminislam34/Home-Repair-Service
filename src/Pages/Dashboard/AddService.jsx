@@ -28,7 +28,9 @@ const AddService = () => {
     const provider = { name, email, photoURL, service };
 
     axios
-      .post(`${import.meta.env.VITE_URL}/addService`, { provider })
+      .post(`${import.meta.env.VITE_URL}/addService`, {
+        provider,
+      })
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

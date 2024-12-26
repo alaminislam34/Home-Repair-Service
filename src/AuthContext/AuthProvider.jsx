@@ -77,8 +77,12 @@ const AuthProvider = ({ children }) => {
   // handle fetch services
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_URL}/allServices`, { withCredentials: true })
+      .get(`${import.meta.env.VITE_URL}/publicServices`, {
+        withCredentials: true,
+      })
       .then((res) => {
+        console.log(res.data);
+
         setServices(res.data);
         setLoader(false);
       })

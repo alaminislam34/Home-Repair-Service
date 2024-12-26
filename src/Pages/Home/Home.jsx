@@ -36,7 +36,7 @@ const Home = () => {
               data-aos-delay="300"
               data-aos-duration="1200"
               data-aos-easing="ease-in-out"
-              className="text-2xl md:text-3xl lg:text-5xl font-bold lg:w-9/12 mx-auto"
+              className="text-2xl md:text-3xl lg:text-5xl font-bold lg:w-9/12 mx-auto text-center tracking-wide leading-relaxed"
             >
               Bangladesh`s One-Stop Solution for Renovation & Interior Design.
             </h2>
