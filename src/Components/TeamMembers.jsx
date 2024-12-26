@@ -16,13 +16,25 @@ const TeamMembers = () => {
   return (
     <div className="my-6 md:my-8 lg:my-12">
       <div className="text-center space-y-2 my-4 md:my-8 lg:my-12">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold ">
+        <h2
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="200"
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold "
+        >
           Team Members
         </h2>
-        <p>Our most experienced and friendly team members.</p>
+        <p data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="400">
+          Our most experienced and friendly team members.
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mx-4">
-        <div className="bg-base-100 rounded-lg relative group overflow-hidden flex justify-center items-center px-4 pt-4">
+        <div
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="600"
+          className="bg-base-100 rounded-lg relative group overflow-hidden flex justify-center items-center px-4 pt-4"
+        >
           <img src={member1} className="bg-center object-cover pt-4 px-4" />
           <div
             className={`absolute group-hover:bottom-0 -bottom-40 duration-500 left-0 w-full bg-gradient-to-bl ${
@@ -46,7 +58,12 @@ const TeamMembers = () => {
             </div>
           </div>
         </div>
-        <div className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4">
+        <div
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="800"
+          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+        >
           <img src={member2} className="bg-center object-cover pt-4 px-4" />
           <div
             className={`absolute group-hover:bottom-0 -bottom-40 duration-500 left-0 w-full bg-gradient-to-bl ${
@@ -67,7 +84,12 @@ const TeamMembers = () => {
             </div>
           </div>
         </div>
-        <div className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4">
+        <div
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="1000"
+          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+        >
           <img src={member3} className="bg-center object-cover pt-4 px-4" />
           <div
             className={`absolute group-hover:bottom-0 -bottom-40 duration-500 left-0 w-full bg-gradient-to-bl ${
@@ -86,7 +108,12 @@ const TeamMembers = () => {
             </div>
           </div>
         </div>
-        <div className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4">
+        <div
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="1200"
+          className="bg-base-100 rounded-lg relative group overflow-hidden  flex justify-center items-center px-4 pt-4"
+        >
           <img src={member4} className="bg-center object-cover pt-4 px-4" />
           <div
             className={`absolute group-hover:bottom-0 -bottom-40 duration-500 left-0 w-full bg-gradient-to-bl ${

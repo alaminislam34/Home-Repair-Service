@@ -131,7 +131,7 @@ const MyServicesCard = ({ service }) => {
                 }}
                 className={`rounded-xl ${
                   theme === "light"
-                    ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
+                    ? "bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200"
                     : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
                 } shadow-md transition-all duration-300`}
               >
@@ -161,7 +161,7 @@ const MyServicesCard = ({ service }) => {
                         document.getElementById("my_modal_5").showModal();
                         setId(s?._id);
                       }}
-                      className="px-3 py-2 text-sm border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
+                      className="px-3 py-2 text-sm border-gray-300 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
                     >
                       Edit
                       <FaPen />

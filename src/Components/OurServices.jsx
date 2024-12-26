@@ -7,7 +7,7 @@ import { RiSofaLine } from "react-icons/ri";
 
 const OurServices = () => {
   return (
-    <div className="my-6 md:my-8 mx-12">
+    <div className="my-6 md:my-8 lg:mx-12">
       <div className="flex justify-center items-center flex-col gap-3 md:gap-4 my-4 md:my-6 text-center">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
           Our Services

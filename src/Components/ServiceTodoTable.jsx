@@ -48,10 +48,15 @@ const ServiceTodoTable = ({ service }) => {
                 <td className="text-xs md:text-sm">{book?.serviceName}</td>
                 <td className="text-xs md:text-sm">
                   <select
-                    defaultValue={"Pending"}
+                    defaultValue={book?.serviceStatus}
                     onChange={(e) => handleStatus(e, book._id)}
                     name="status"
-                    className="py-1 px-1"
+                    disabled={book?.serviceStatus === "Completed"}
+                    className={` ${
+                      book?.serviceStatus === "Completed"
+                        ? "text-green-600"
+                        : ""
+                    }`}
                   >
                     <option value={"Pending"} selected>
                       Pending

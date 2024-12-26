@@ -28,6 +28,19 @@ const ServiceDetails = () => {
     const provideArea = form.area.value;
     const serviceStatus = "pending";
 
+    console.table({
+      serviceId,
+      serviceName,
+      serviceImg,
+      pEmail,
+      pName,
+      uEmail,
+      uName,
+      sDate,
+      price,
+      provideArea,
+      serviceStatus,
+    });
     if (pEmail === uEmail) {
       return toast.error("Action not permitted");
     }
@@ -44,8 +57,8 @@ const ServiceDetails = () => {
           uEmail,
           uName,
           sDate,
-          price,
           provideArea,
+          price,
           serviceStatus,
         },
         { withCredentials: true }
@@ -66,16 +79,16 @@ const ServiceDetails = () => {
     <div>
       <div className="text-center">
         <br />
-        <h2 className="my-4 md:my-8 lg:my-12 text-center text-xl md:text-2xl lg:text-3xl font-bold border-b-2 border-blue-500 py-2 inline">
+        <h2 className="my-4 md:my-8 lg:my-12 text-center text-xl md:text-2xl lg:text-3xl font-bold py-2 inline">
           {provider?.service.serviceName}
         </h2>
       </div>
-      <div className="flex justify-start items-center">
+      <div className="flex justify-start items-center my-2 mx-2">
         <Link
           to="/"
-          className="flex flex-row gap-2 items-center px-4 py-2 bg-base-200 rounded-lg hover:scale-105 duration-500 hover:bg-base-300"
+          className="flex flex-row gap-2 text-sm md:text-base items-center py-1 px-3 md:px-4 md:py-2 bg-base-200 rounded-lg hover:scale-105 duration-500 hover:bg-base-300"
         >
-          Back <TbArrowBack className="text-lg" />
+          Back <TbArrowBack className="text-sm md:text-lg" />
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 md:my-12 lg:my-16 p-4 shadow-lg rounded-lg">
@@ -125,7 +138,7 @@ const ServiceDetails = () => {
               onClick={() => document.getElementById("my_modal_5").showModal()}
               className="px-4 py-2 w-full border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-[0.5deg] duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
             >
-              Book Service
+              Book Now
             </button>
           </div>
         </div>
@@ -142,6 +155,20 @@ const ServiceDetails = () => {
 
               {/* Service Details Section */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Service image */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-medium text-gray-600">
+                    Service Img
+                  </label>
+                  <input
+                    type="text"
+                    value={provider?.service.serviceImgURL}
+                    name="serviceImg"
+                    readOnly
+                    className="border border-gray-300 py-2 px-3 rounded text-sm bg-gray-100 text-gray-500"
+                  />
+                </div>
+
                 {/* Service ID */}
                 <div className="flex flex-col">
                   <label className="text-sm font-medium text-gray-600">
@@ -155,7 +182,8 @@ const ServiceDetails = () => {
                     className="border border-gray-300 py-2 px-3 rounded text-sm bg-gray-100 text-gray-500"
                   />
                 </div>
-
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Service Name */}
                 <div className="flex flex-col">
                   <label className="text-sm font-medium text-gray-600">
@@ -169,8 +197,20 @@ const ServiceDetails = () => {
                     className="border border-gray-300 py-2 px-3 rounded text-sm bg-gray-100 text-gray-500"
                   />
                 </div>
+                {/* Provider email */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-medium text-gray-600">
+                    Provider Email
+                  </label>
+                  <input
+                    type="email"
+                    value={provider?.email}
+                    name="pEmail"
+                    readOnly
+                    className="border border-gray-300 py-2 px-3 rounded text-sm bg-gray-100 text-gray-500"
+                  />
+                </div>
               </div>
-
               {/* Provider and User Info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Provider Name */}
@@ -251,12 +291,12 @@ const ServiceDetails = () => {
                 {/* Provider Email */}
                 <div className="flex flex-col">
                   <label className="text-sm font-medium text-gray-600">
-                    Provider Email
+                    User Email
                   </label>
                   <input
                     type="email"
-                    value={provider?.email}
-                    name="pEmail"
+                    value={user?.email}
+                    name="uEmail"
                     readOnly
                     className="border border-gray-300 py-2 px-3 rounded text-sm bg-gray-100 text-gray-500"
                   />

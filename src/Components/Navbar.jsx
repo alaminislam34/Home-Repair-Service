@@ -188,12 +188,12 @@ const Navbar = () => {
               {menu}
             </ul>
           </div>
-          <div className="flex flex-row gap-2 items-center">
+          <div
+            onClick={() => navigate("/")}
+            className="flex flex-row gap-2 items-center cursor-pointer"
+          >
             <img className="w-10 h-10 md:w-14 md:h-14" src={logo} alt="" />
-            <button
-              onClick={() => navigate("/")}
-              className="text-base sm:text-xl md:text-2xl font-bold"
-            >
+            <button className="text-base sm:text-xl md:text-2xl font-bold">
               Repair<span className="text-blue-500">Mate</span>
             </button>
           </div>

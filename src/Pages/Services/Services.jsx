@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Components/Loader";
 import banner from "../../assets/Banner/banner1.jpg";
+import Aos from "aos";
 
 const Services = () => {
   const { setId, loader, setLoader, theme } = useContext(AuthContext);
@@ -33,10 +34,12 @@ const Services = () => {
     e.preventDefault();
     setLoader(true);
     axios
-      .get(`${import.meta.env.VITE_URL}/allServices?search=${value}`, {
+      .get(`${import.meta.env.VITE_URL}/publicServices?search=${value}`, {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data);
+
         setServices(res.data);
         setLoader(false);
       })
@@ -44,6 +47,13 @@ const Services = () => {
         setLoader(false);
       });
   };
+  useEffect(() => {
+    Aos.init({
+      offset: 200,
+      once: true,
+    });
+    Aos.refresh();
+  }, [allService]);
   return (
     <div>
       <div>
@@ -86,13 +96,13 @@ const Services = () => {
         ) : allService.length > 0 ? (
           allService?.map((service, i) => (
             <div
-              // data-aos="zoom-in"
-              // data-aos-duration="1000"
-              // data-aos-delay={`${i + 150}`}
+              data-aos="zoom-in-up"
+              data-aos-duration="1200"
+              data-aos-delay={`${i + 400}`}
               key={service._id}
               className={`grid grid-cols-1 lg:grid-cols-5 shadow-xl hover:shadow-2xl overflow-hidden ${
                 theme === "light"
-                  ? "bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300"
+                  ? "bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 text-black"
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
               } rounded-lg transition-transform duration-500`}
             >
@@ -122,7 +132,7 @@ const Services = () => {
                   {/* service provider */}
                   <div className="flex flex-row gap-4 items-center mt-2">
                     <img
-                      className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-accent"
+                      className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-blue-500"
                       src={service?.provider.photoURL}
                       referrerPolicy="no-referrer"
                     />
@@ -135,7 +145,7 @@ const Services = () => {
                         setId(service._id);
                         navigate(`/serviceDetails/${service._id}`);
                       }}
-                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
                     >
                       View Details
                     </button>
