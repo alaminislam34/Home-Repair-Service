@@ -13,7 +13,6 @@ const MyServicesCard = ({ service }) => {
   const { myServices, setMyServices } = service;
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState("");
-  console.log(myServices);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -55,7 +54,6 @@ const MyServicesCard = ({ service }) => {
         axios
           .delete(`${import.meta.env.VITE_URL}/deleteService/${id}`)
           .then((res) => {
-            console.log(res.data);
             if (res.data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted",
@@ -67,9 +65,7 @@ const MyServicesCard = ({ service }) => {
               setMyServices(remainingService);
             }
           })
-          .catch((error) => {
-            console.log(error);
-          })
+          .catch(() => {})
           .finally(() => {
             setLoading(false);
           });
@@ -106,9 +102,7 @@ const MyServicesCard = ({ service }) => {
           icon: "success",
         });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => {});
   };
 
   return (

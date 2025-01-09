@@ -4,22 +4,24 @@ import { LuChefHat } from "react-icons/lu";
 import { MdOutlineElectricalServices } from "react-icons/md";
 import { PiPipeFill } from "react-icons/pi";
 import { RiSofaLine } from "react-icons/ri";
+import SectionTitle from "./SectionTitle/SectionTitle";
 
 const OurServices = () => {
   return (
     <div className="my-6 md:my-8 lg:mx-12">
-      <div className="flex justify-center items-center flex-col gap-3 md:gap-4 my-4 md:my-6 text-center">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
-          Our Services
-        </h2>
-        <p className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto text-gray-400">
-          Our home repair services include plumbing, carpentry, electrical
-          fixes, painting, and maintenance, ensuring quality solutions for every
-          household need.
-        </p>
-      </div>
+      <SectionTitle
+        Title={"What We Do"}
+        description={
+          "Our home repair services include plumbing, carpentry, electrical fixes, painting, and maintenance, ensuring quality solutions for every household need."
+        }
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-center my-8 md:my-12 mx-4">
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <GiPaintBucket className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
@@ -33,7 +35,12 @@ const OurServices = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <PiPipeFill className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
@@ -47,7 +54,12 @@ const OurServices = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <BsDoorOpen className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
@@ -60,7 +72,12 @@ const OurServices = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <MdOutlineElectricalServices className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
@@ -74,7 +91,12 @@ const OurServices = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <RiSofaLine className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
@@ -88,7 +110,12 @@ const OurServices = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group">
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+        >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <LuChefHat className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>

@@ -12,8 +12,6 @@ const Services = () => {
   const [allService, setServices] = useState([]);
   const navigate = useNavigate();
 
-  console.log(allService);
-
   useEffect(() => {
     setLoader(true);
     axios
@@ -23,7 +21,6 @@ const Services = () => {
       .then((res) => {
         setLoader(false);
         setServices(res.data);
-        console.log(res.data);
       })
       .catch(() => {
         setLoader(false);
@@ -38,8 +35,6 @@ const Services = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
-
         setServices(res.data);
         setLoader(false);
       })

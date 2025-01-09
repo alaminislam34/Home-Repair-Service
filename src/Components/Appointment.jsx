@@ -21,8 +21,6 @@ const Appointment = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
-
         if (res) {
           toast.success("Appointment send successfully");
           form.reset();

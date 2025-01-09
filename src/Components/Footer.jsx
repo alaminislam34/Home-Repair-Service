@@ -1,17 +1,17 @@
 import {
   FaFacebook,
   FaInstagram,
-  FaPhone,
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
 import { MdHome, MdOutgoingMail, MdWhatsapp } from "react-icons/md";
 import logo from "../assets/logos/Blogo.png";
 import { Link } from "react-router-dom";
+import { FaPhoneFlip } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="py-6 bg-base-300">
+    <div className="py-6 bg-base-300 pt-8 md:pt-12">
       <div className="flex justify-center items-center">
         <div className="flex flex-row gap-2 items-center">
           <img className="w-10 h-10 md:w-14 md:h-14" src={logo} alt="" />
@@ -23,7 +23,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <footer className="flex flex-wrap gap-4 md:gap-10 lg:gap-6 p-6 md:p-10 py-6 max-w-7xl mx-auto">
+      <footer className="flex flex-wrap justify-between gap-4 md:gap-10 lg:gap-6 p-6 md:p-10 py-6 max-w-7xl mx-auto">
         <div className="flex flex-col justify-start">
           <h3 className="text-xl md:text-2xl font-semibold mb-2">About Us</h3>
           <p className="text-xs md:text-sm w-[250px] md:w-[300px]">
@@ -35,16 +35,16 @@ const Footer = () => {
         <div className="flex flex-col justify-start gap-3 list-none">
           <h6 className="text-lg md:text-xl font-medium">Services</h6>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Electrical Work</p>
+            <p className="inline-block">Electrical Work</p>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Plumbing Work</p>
+            <p className="inline-block">Plumbing Work</p>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Deep Cleaning</p>
+            <p className="inline-block">Deep Cleaning</p>
           </li>
           <li className="text-xs md:text-sm *:cursor-pointer">
-            <p className="inline-block hover:underline">Painting & Polishing</p>
+            <p className="inline-block">Painting & Polishing</p>
           </li>
         </div>
         <div className="flex flex-col justify-start gap-3 list-none">
@@ -73,23 +73,25 @@ const Footer = () => {
         <div className="flex flex-col justify-start gap-3 list-none">
           <h6 className="">Address</h6>
           <li className="text-xs md:text-sm">
-            <p className="hover:underline flex flex-row gap-1">
-              <FaPhone /> 01821858917
+            <p className=" flex flex-row gap-1">
+              <FaPhoneFlip className="text-base md:text-lg p-0.5" /> 01821858917
             </p>
           </li>
           <li className="text-xs md:text-sm">
-            <p className="hover:underline flex flex-row gap-1">
-              <MdOutgoingMail /> mi3548514@gmail.com
+            <p className=" flex flex-row gap-1">
+              <MdOutgoingMail className=" text-lg md:text-xl p-0.5" />{" "}
+              mi3548514@gmail.com
             </p>
           </li>
           <li className="text-xs md:text-sm">
-            <p className="hover:underline flex flex-row gap-1">
-              <MdWhatsapp /> 01929671795
+            <p className=" flex flex-row gap-1">
+              <MdWhatsapp className=" text-lg md:text-xl p-0.5" /> 01929671795
             </p>
           </li>
           <li className="text-xs md:text-sm">
-            <p className="hover:underline flex flex-row gap-1">
-              <MdHome /> House k/19, block K, road n/1, Mirpur, Dhaka
+            <p className="flex flex-row gap-1">
+              <MdHome className=" text-lg md:text-xl p-0.5" /> House k/19, block
+              K, road n/1, Mirpur, Dhaka
             </p>
           </li>
         </div>

@@ -10,24 +10,17 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
+import SectionTitle from "./SectionTitle/SectionTitle";
 
 const TeamMembers = () => {
   const { theme } = useContext(AuthContext);
   return (
     <div className="my-6 md:my-8 lg:my-12">
-      <div className="text-center space-y-2 my-4 md:my-8 lg:my-12">
-        <h2
-          data-aos="zoom-in-up"
-          data-aos-duration="1200"
-          data-aos-delay="200"
-          className="text-2xl md:text-3xl lg:text-4xl font-semibold "
-        >
-          Team Members
-        </h2>
-        <p data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="400">
-          Our most experienced and friendly team members.
-        </p>
-      </div>
+      <SectionTitle
+        Title={"Team Members"}
+        description={"Our most experienced and friendly team members."}
+      />
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mx-4">
         <div
           data-aos="zoom-in-up"

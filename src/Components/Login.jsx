@@ -8,12 +8,12 @@ import {
 import { auth } from "../Firebase/firebase.config";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { setUser, theme } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state);
 
   const handleSignUpWithGoogle = () => {
     const googleProvider = new GoogleAuthProvider();
@@ -41,8 +41,7 @@ const Login = () => {
         });
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         Swal.fire({
           title: "Ops!",
           text: "Your email or password incorrect",
@@ -61,54 +60,52 @@ const Login = () => {
             : "shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)]"
         }`}
       >
-        <h2 className="my-2 md:my-4 text-center text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+        <h2 className="my-2 md:my-4 text-center text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500">
           Login
         </h2>
         <div className="flex flex-col gap-1">
-          <label
-            htmlFor="email"
-            className="text-base md:text-lg font-semibold py-1"
-          >
+          <label htmlFor="email" className="font-semibold py-1">
             Your Email
           </label>
           <input
             type="email"
             name="email"
             placeholder="Enter your email"
-            className="input input-primary border border-base-300 focus:outline-none text-sm md:text-base"
+            className="input border-base-300 focus:border-blue-500 border focus:outline-none text-sm md:text-base"
             required
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label
-            htmlFor="email"
-            className="text-base md:text-lg font-semibold py-1"
-          >
+          <label htmlFor="email" className="font-semibold py-1">
             Your Password
           </label>
           <input
             type="password"
             name="password"
             placeholder="Enter your password"
-            className="input input-primary border border-base-300 focus:outline-none text-sm md:text-base"
+            className="input border-base-300 focus:border-blue-500 border focus:outline-none text-sm md:text-base"
             required
           />
         </div>
         <input
-          className="btn my-2 btn-primary text-base"
+          className="btn my-2 bg-blue-500 text-white hover:bg-blue-600 text-base"
           type="submit"
           value="Login"
         />
-        <p className="text-center">
-          Don`t have an account ? <Link to="/register">Register</Link>
+        <p className="text-right">
+          Don`t have an account ?{" "}
+          <Link to="/register" className="text-blue-500 underline">
+            Register
+          </Link>
         </p>
+        <div className="divider">or</div>
         <div className="flex justify-center items-center">
           <button
             type="button"
             onClick={handleSignUpWithGoogle}
             className="btn"
           >
-            Continue with google
+            <FcGoogle className="text-xl md:text-2xl" /> Continue with google
           </button>
         </div>
       </form>

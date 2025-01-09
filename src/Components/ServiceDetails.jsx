@@ -71,7 +71,6 @@ const ServiceDetails = () => {
           text: "Service booked successfully",
           icon: "success",
         });
-        console.log(res.data);
       });
   };
 

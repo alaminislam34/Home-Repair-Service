@@ -8,16 +8,13 @@ const ServiceTodoTable = ({ service }) => {
   const handleStatus = (e, id) => {
     const status = e.target.value;
 
-    console.log(status, id);
     axios
       .patch(
         `${import.meta.env.VITE_URL}/statusChange/${id}`,
         { status },
         { withCredentials: true }
       )
-      .then((res) => {
-        console.log(res.data);
-      });
+      .then((res) => {});
   };
 
   const { bookedService: booked } = service;

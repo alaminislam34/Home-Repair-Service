@@ -9,6 +9,7 @@ import OurServices from "../../Components/OurServices";
 import OurClients from "../../Components/OurClients";
 import Experience from "../AboutUs/Experience";
 import Gallery from "./Gallery";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const Home = () => {
   const { services, loader, setId, theme } = useContext(AuthContext);
@@ -75,15 +76,13 @@ const Home = () => {
       </div>
 
       {/* our popular services */}
-      <div
-        data-aos="zoom-in-right"
-        data-aos-duration="1500"
-        className="mx-4 flex justify-center items-center"
-      >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold py-2 mt-8 md:mt-12">
-          Our Popular Services
-        </h2>
-      </div>
+      <SectionTitle
+        Title={"Popular Services"}
+        description={
+          "Discover our popular services, featuring expert home repairs and upgrades that bring comfort, functionality, and style to your space."
+        }
+      />
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 lg:gap-6 my-6 mx-4 py-8">
         {loader ? (
           <div className="md:col-span-2">
@@ -170,12 +169,6 @@ const Home = () => {
         <OurServices />
         <br />
         <div className="mx-auto w-full">
-          <div className="flex justify-center items-center my-4 md:my-6">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2">
-              {" "}
-              Gallery Of Services
-            </h2>
-          </div>
           <Gallery />
         </div>
         <br />

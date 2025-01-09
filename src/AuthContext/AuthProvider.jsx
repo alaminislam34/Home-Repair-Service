@@ -26,9 +26,7 @@ const AuthProvider = ({ children }) => {
           .post(`${import.meta.env.VITE_URL}/jwt`, email, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log(res.data);
-          });
+          .then(() => {});
       } else {
         axios
           .post(
@@ -36,8 +34,7 @@ const AuthProvider = ({ children }) => {
             {},
             { withCredentials: true }
           )
-          .then((res) => {
-            console.log(res);
+          .then(() => {
             setLoading(false);
           });
         setUser(null);
@@ -81,8 +78,6 @@ const AuthProvider = ({ children }) => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
-
         setServices(res.data);
         setLoader(false);
       })

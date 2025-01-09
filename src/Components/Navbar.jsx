@@ -65,17 +65,17 @@ const Navbar = () => {
 
   const menu = (
     <>
-      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+      <li className="py-1 px-2 rounded-lg">
         <NavLink to="/" className="text-sm md:text-base">
           Home
         </NavLink>
       </li>
-      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+      <li className="py-1 px-2 rounded-lg">
         <NavLink to="/services" className="text-sm md:text-base">
           Services
         </NavLink>
       </li>
-      <li className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-1 px-2 rounded-lg">
+      <li className="py-1 px-2 rounded-lg">
         <NavLink to="/aboutUs" className="text-sm md:text-base">
           About Us
         </NavLink>
@@ -87,7 +87,7 @@ const Navbar = () => {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`transition duration-500 hover:scale-105 hover:-translate-y-1.5 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)]  py-2 px-4 rounded-lg`}
+          className={`py-2 px-4 rounded-lg`}
         >
           Dashboard
         </button>
@@ -101,31 +101,31 @@ const Navbar = () => {
           >
             <ul className="flex flex-col p-4">
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                className="py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/addService">Add Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                className="py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/manageService">Manage Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                className="py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/bookedServices">Booked Service</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                className="py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/serviceToDo">Service ToDo</NavLink>
               </li>
               <li
-                className="hover:scale-105 transition duration-500 hover:-translate-y-1 hover:shadow-[_2px_2px_6px_rgb(0,0,0,0.5)] py-2 px-4 rounded-lg text-sm md:text-base"
+                className="py-2 px-4 rounded-lg text-sm md:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 <NavLink to="/appointment">Appointment</NavLink>

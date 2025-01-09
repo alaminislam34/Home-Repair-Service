@@ -10,6 +10,7 @@ import { auth } from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const { theme, setUser } = useContext(AuthContext);
@@ -40,8 +41,7 @@ const Register = () => {
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,
-        }).then((res) => {
-          console.log(res);
+        }).then(() => {
           Swal.fire({
             title: "Success",
             text: "Account Register Successfully",
@@ -50,10 +50,8 @@ const Register = () => {
           });
         });
         navigate(location?.state ? location.state : "/");
-        console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         Swal.fire({
           title: "Ops",
           text: "Account Register Failed",
@@ -85,15 +83,17 @@ const Register = () => {
             : "shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)]"
         }  w-11/12 sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto rounded-3xl`}
       >
-        <h2 className="my-2 md:my-4 text-center text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+        <h2 className="my-2 md:my-4 text-center text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500">
           Register
         </h2>
         <div className="flex flex-col gap-1">
-          <label htmlFor="email">Your Name</label>
+          <label className="font-semibold" htmlFor="email">
+            Your Name
+          </label>
           <input
             type="text"
             placeholder="Enter your name"
-            className="input input-primary border-base-300 outline-none"
+            className="input focus:border-blue-500 focus:outline-none placeholder:text-gray-500 border-base-300 outline-none"
             {...register("name", { required: "Name is required" })}
           />
           {errors?.name ? (
@@ -105,11 +105,13 @@ const Register = () => {
           )}
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="email">Your Email</label>
+          <label className="font-semibold" htmlFor="email">
+            Your Email
+          </label>
           <input
             type="email"
             placeholder="Enter your email"
-            className="input input-primary border-base-300 outline-none"
+            className="input focus:border-blue-500 focus:outline-none placeholder:text-gray-500 border-base-300 outline-none"
             {...register("email", { required: "Email is required" })}
           />
           {errors?.email ? (
@@ -121,11 +123,13 @@ const Register = () => {
           )}
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="email">Your Password</label>
+          <label className="font-semibold" htmlFor="email">
+            Your Password
+          </label>
           <input
             type="password"
             placeholder="Enter your password"
-            className="input input-primary border-base-300 outline-none"
+            className="input focus:border-blue-500 focus:outline-none placeholder:text-gray-500 border-base-300 outline-none"
             {...register("password", {
               required: "Password is required",
               pattern: {
@@ -142,11 +146,13 @@ const Register = () => {
           )}
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="email">Photo URL</label>
+          <label className="font-semibold" htmlFor="email">
+            Photo URL
+          </label>
           <input
             type="text"
             placeholder="Enter your photoURL"
-            className="input input-primary border-base-300 outline-none"
+            className="input focus:border-blue-500 focus:outline-none placeholder:text-gray-500 border-base-300 outline-none"
             {...register("photoURL", { required: "PhotoURL is required" })}
           />
           {errors?.photoURL ? (
@@ -158,16 +164,20 @@ const Register = () => {
           )}
         </div>
         <input
-          className="btn my-2 btn-primary border-base-300 outline-none text-base"
+          className="btn my-2 bg-blue-500 hover:bg-blue-600 text-white border-base-300 outline-none text-base"
           type="submit"
-          value="Login"
+          value="Register"
         />
-        <p className="text-center">
-          Already have an account ? <Link to="/login">Login</Link>
+        <p className="text-right">
+          Already have an account ?{" "}
+          <Link to="/login" className="text-blue-500 underline">
+            Login
+          </Link>
         </p>
+        <div className="divider">or</div>
         <div className="flex justify-center items-center">
           <button onClick={handleSignUpWithGoogle} className="btn">
-            Continue with google
+            <FcGoogle className="text-xl md:text-2xl" /> Continue with google
           </button>
         </div>
       </form>

@@ -14,8 +14,6 @@ const BookedService = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
-
         setBooked(res.data);
       });
   }, [user]);
