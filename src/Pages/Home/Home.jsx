@@ -6,16 +6,15 @@ import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import OurServices from "../../Components/OurServices";
-import OurClients from "../../Components/OurClients";
 import Experience from "../AboutUs/Experience";
 import Gallery from "./Gallery";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import Testimonial from "./Testimonial";
+import OurClients from "./OurClients";
 
 const Home = () => {
   const { services, loader, setId, theme } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(services);
-
   useEffect(() => {
     Aos.init({
       offset: 200,
@@ -23,11 +22,12 @@ const Home = () => {
     });
     Aos.refresh();
   }, [services]);
+
   return (
     <div className="mb-12 md:mb-20">
       {/* Banner section */}
       <div className="w-full relative">
-        <div className="h-[350px] md:h-[400px] lg:h-[500px]">
+        <div className="h-[70vh]">
           <img
             className="w-full h-full object-cover bg-center bg-no-repeat"
             src={banner1}
@@ -171,6 +171,8 @@ const Home = () => {
         <div className="mx-auto w-full">
           <Gallery />
         </div>
+        <Testimonial />
+        <br />
         <br />
         <OurClients />
       </div>

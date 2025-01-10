@@ -80,60 +80,64 @@ const Navbar = () => {
           About Us
         </NavLink>
       </li>
-      <div
-        className="relative"
-        onMouseEnter={handleDropdownOpen}
-        onMouseLeave={handleDropdownClose}
-      >
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`py-2 px-4 rounded-lg`}
+      {user ? (
+        <div
+          className="relative"
+          onMouseEnter={handleDropdownOpen}
+          onMouseLeave={handleDropdownClose}
         >
-          Dashboard
-        </button>
-        {isOpen && (
-          <div
-            className={`absolute left-0 w-48 md:w-52 rounded-lg shadow-lg z-50 ${
-              theme === "light"
-                ? "bg-white text-black"
-                : "bg-gray-900 text-white"
-            }`}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={`py-2 px-4 rounded-lg`}
           >
-            <ul className="flex flex-col p-4">
-              <li
-                className="py-2 px-4 rounded-lg text-sm md:text-base"
-                onClick={() => setIsOpen(false)}
-              >
-                <NavLink to="/addService">Add Service</NavLink>
-              </li>
-              <li
-                className="py-2 px-4 rounded-lg text-sm md:text-base"
-                onClick={() => setIsOpen(false)}
-              >
-                <NavLink to="/manageService">Manage Service</NavLink>
-              </li>
-              <li
-                className="py-2 px-4 rounded-lg text-sm md:text-base"
-                onClick={() => setIsOpen(false)}
-              >
-                <NavLink to="/bookedServices">Booked Service</NavLink>
-              </li>
-              <li
-                className="py-2 px-4 rounded-lg text-sm md:text-base"
-                onClick={() => setIsOpen(false)}
-              >
-                <NavLink to="/serviceToDo">Service ToDo</NavLink>
-              </li>
-              <li
-                className="py-2 px-4 rounded-lg text-sm md:text-base"
-                onClick={() => setIsOpen(false)}
-              >
-                <NavLink to="/appointment">Appointment</NavLink>
-              </li>
-            </ul>
-          </div>
-        )}
-      </div>
+            Dashboard
+          </button>
+          {isOpen && (
+            <div
+              className={`absolute left-0 w-48 md:w-52 rounded-lg shadow-lg z-50 ${
+                theme === "light"
+                  ? "bg-white text-black"
+                  : "bg-gray-900 text-white"
+              }`}
+            >
+              <ul className="flex flex-col p-4">
+                <li
+                  className="py-2 px-4 rounded-lg text-sm md:text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavLink to="/addService">Add Service</NavLink>
+                </li>
+                <li
+                  className="py-2 px-4 rounded-lg text-sm md:text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavLink to="/manageService">Manage Service</NavLink>
+                </li>
+                <li
+                  className="py-2 px-4 rounded-lg text-sm md:text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavLink to="/bookedServices">Booked Service</NavLink>
+                </li>
+                <li
+                  className="py-2 px-4 rounded-lg text-sm md:text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavLink to="/serviceToDo">Service ToDo</NavLink>
+                </li>
+                <li
+                  className="py-2 px-4 rounded-lg text-sm md:text-base"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavLink to="/appointment">Appointment</NavLink>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 
@@ -161,9 +165,7 @@ const Navbar = () => {
       }`}
     >
       {/* navbar */}
-      <div
-        className={`navbar max-w-7xl mx-auto py-4 px-4 transition-all duration-300 `}
-      >
+      <div className={`navbar max-w-7xl mx-auto py-4 px-4`}>
         <div className="navbar-start">
           <div className="dropdown">
             <motion.div

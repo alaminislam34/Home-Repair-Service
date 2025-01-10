@@ -1,12 +1,12 @@
-import client1 from "../assets/Our clients/client1.jpg";
-import client2 from "../assets/Our clients/client2.jpg";
-import client3 from "../assets/Our clients/client3.jpg";
-import client4 from "../assets/Our clients/client4.jpg";
-import client5 from "../assets/Our clients/client5.jpg";
-import client6 from "../assets/Our clients/client6.jpg";
-import client7 from "../assets/Our clients/client7.jpg";
-import client8 from "../assets/Our clients/client8.jpg";
-import SectionTitle from "./SectionTitle/SectionTitle";
+import client1 from "../../assets/Our clients/client1.jpg";
+import client2 from "../../assets/Our clients/client2.jpg";
+import client3 from "../../assets/Our clients/client3.jpg";
+import client4 from "../../assets/Our clients/client4.jpg";
+import client5 from "../../assets/Our clients/client5.jpg";
+import client6 from "../../assets/Our clients/client6.jpg";
+import client7 from "../../assets/Our clients/client7.jpg";
+import client8 from "../../assets/Our clients/client8.jpg";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const OurClients = () => {
   const clients = [

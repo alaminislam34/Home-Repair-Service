@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.5.0",
     "@tanstack/react-query": "^5.62.8",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "firebase": "^11.1.0",
+    "keen-slider": "^6.8.6",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
     "motion": "^11.15.0",

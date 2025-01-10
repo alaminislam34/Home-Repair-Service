@@ -24,7 +24,13 @@ const MasonryGallery = () => {
       <div className="p-4 flex justify-center items-center">
         <div className="columns-1 sm:columns-2 md:columns-3 gap-4 items-center">
           {images.map((image, index) => (
-            <div key={index} className="mb-4 overflow-hidden rounded-xl">
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="1200"
+              data-aos-delay={index + 200}
+              key={index}
+              className="mb-4 overflow-hidden rounded-xl"
+            >
               <img
                 src={image}
                 alt={`Gallery image ${index + 1}`}
