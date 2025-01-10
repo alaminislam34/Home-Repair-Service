@@ -90,58 +90,59 @@ const Services = () => {
             <div
               data-aos="zoom-in-up"
               data-aos-duration="1200"
-              data-aos-delay={`${i + 400}`}
+              data-aos-delay={`${i + 200}`}
               key={service._id}
-              className={`grid grid-cols-1 lg:grid-cols-5 shadow-xl hover:shadow-2xl overflow-hidden ${
+              className={`grid grid-cols-1 lg:grid-cols-4 shadow-xl hover:shadow-2xl overflow-hidden ${
                 theme === "light"
                   ? "bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 text-black"
                   : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
               } rounded-lg transition-transform duration-500`}
             >
-              <div className="lg:col-span-3 overflow-hidden">
+              {/* Image Section */}
+              <div className="lg:col-span-2 overflow-hidden">
                 <img
-                  className="aspect-video object-cover bg-center bg-cover bg-no-repeat hover:scale-105 transition-transform duration-500  w-full h-full"
-                  src={service?.provider.service.serviceImgURL}
-                  alt=""
+                  className="w-full h-full object-cover rounded-t-lg lg:rounded-l-lg transition-transform duration-500 hover:scale-105"
+                  src={service?.provider?.service.serviceImgURL}
+                  alt="Service Image"
                 />
               </div>
+
+              {/* Content Section */}
               <div className="p-4 lg:col-span-2 flex flex-col justify-between">
                 <div>
-                  {/* service name */}
-                  <h2 className="text-base md:text-lg lg:text-xl font-semibold">
-                    {service?.provider.service.serviceName}
+                  <h2 className="text-lg md:text-xl font-semibold mb-2">
+                    {service?.provider?.service.serviceName}
                   </h2>
-                  {/* service description */}
-                  <p className="text-sm md:text-[15px] text-gray-500">
-                    {service?.provider.service.description.slice(0, 80)}
+                  <p className="text-sm md:text-[15px] text-gray-500 mb-2">
+                    {service?.provider?.service.description.slice(0, 80)}...
                   </p>
                   <p className="text-green-600 font-semibold">
                     {service?.provider.service.servicePrice} ৳
                   </p>
                 </div>
-                <div>
-                  <p>Service Provider</p>
-                  {/* service provider */}
+
+                <div className="mt-4">
+                  <p className="font-medium">Service Provider:</p>
                   <div className="flex flex-row gap-4 items-center mt-2">
                     <img
-                      className="w-8 h-8 md:w-10 md:h-10 hover:rotate-12 duration-500 hover:scale-110 rounded-full object-cover bg-center border-2 border-blue-500"
+                      className="w-10 h-10 rounded-full hover:scale-105 hover:-rotate-3 duration-300  object-cover border-2 border-blue-500"
                       src={service?.provider.photoURL}
-                      referrerPolicy="no-referrer"
+                      alt="Provider"
                     />
-                    <h4>{service?.provider.name}</h4>
+                    <h4 className="text-sm font-medium">
+                      {service?.provider.name}
+                    </h4>
                   </div>
 
-                  <div className="my-2">
-                    <button
-                      onClick={() => {
-                        setId(service._id);
-                        navigate(`/serviceDetails/${service._id}`);
-                      }}
-                      className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
-                    >
-                      View Details
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => {
+                      setId(service._id);
+                      navigate(`/serviceDetails/${service._id}`);
+                    }}
+                    className="mt-4 px-4 py-2 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>

@@ -91,7 +91,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <br />
+
         <TeamMembers />
         <br />
         <Appointment />
