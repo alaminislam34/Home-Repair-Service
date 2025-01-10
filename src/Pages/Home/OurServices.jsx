@@ -4,7 +4,7 @@ import { LuChefHat } from "react-icons/lu";
 import { MdOutlineElectricalServices } from "react-icons/md";
 import { PiPipeFill } from "react-icons/pi";
 import { RiSofaLine } from "react-icons/ri";
-import SectionTitle from "./SectionTitle/SectionTitle";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const OurServices = () => {
   return (

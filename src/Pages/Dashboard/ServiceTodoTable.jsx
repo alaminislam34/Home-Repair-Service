@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
-import { AuthContext } from "../AuthContext/AuthProvider";
+import { AuthContext } from "../../AuthContext/AuthProvider";
+// import { AuthContext } from "../../AuthContext/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const ServiceTodoTable = ({ service }) => {
@@ -14,7 +15,7 @@ const ServiceTodoTable = ({ service }) => {
         { status },
         { withCredentials: true }
       )
-      .then((res) => {});
+      .then(() => {});
   };
 
   const { bookedService: booked } = service;
@@ -55,7 +56,7 @@ const ServiceTodoTable = ({ service }) => {
                         : ""
                     }`}
                   >
-                    <option value={"Pending"} selected>
+                    <option value={"Pending"} defaultValue={"Pending"}>
                       Pending
                     </option>
                     <option value={"Working"}>Working</option>

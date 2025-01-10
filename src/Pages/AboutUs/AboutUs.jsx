@@ -1,13 +1,13 @@
 import team from "../../assets/team/group.jpg";
 import Appointment from "../../Components/Appointment";
-import TeamMembers from "../../Components/TeamMembers";
-import Experience from "./Experience";
 import { useEffect } from "react";
 import Aos from "aos";
 import { TfiAlarmClock } from "react-icons/tfi";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import teamMan from "../../assets/team/m3.jpg";
+import TeamMembers from "./TeamMembers";
+import PageBanner from "../../Components/pageBanner/PageBanner";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -19,18 +19,7 @@ const AboutUs = () => {
   }, []);
   return (
     <div>
-      <div className="flex justify-center items-center h-[200px] md:h-[250px]  relative">
-        <img
-          className="w-full h-full bg-cover bg-no-repeat bg-center object-cover"
-          src={team}
-          alt=""
-        />
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black/60">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center text-gray-200">
-            About Us
-          </h2>
-        </div>
-      </div>
+      <PageBanner title={"About Us"} />
       <div>
         <br />
         <div className="m-4 md:m-6 flex flex-wrap gap-4 items-center p-6 md:p-8">

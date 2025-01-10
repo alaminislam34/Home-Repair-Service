@@ -5,7 +5,7 @@ import Loader from "../../Components/Loader";
 import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import OurServices from "../../Components/OurServices";
+import OurServices from "./OurServices";
 import Experience from "../AboutUs/Experience";
 import Gallery from "./Gallery";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
@@ -157,6 +157,9 @@ const Home = () => {
       </div>
       <div className="flex justify-center items-center mb-4">
         <button
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
           onClick={() => navigate("/services")}
           className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
         >

@@ -85,7 +85,7 @@ const ServiceDetails = () => {
       <div className="flex justify-start items-center my-2 mx-2">
         <Link
           to="/"
-          className="flex flex-row gap-2 text-sm md:text-base items-center py-1 px-3 md:px-4 md:py-2 bg-base-200 rounded-lg hover:scale-105 duration-500 hover:bg-base-300"
+          className="px-4 py-2 border-gray-300 bg-gradient-to-l from-blue-300 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex justify-center items-center"
         >
           Back <TbArrowBack className="text-sm md:text-lg" />
         </Link>

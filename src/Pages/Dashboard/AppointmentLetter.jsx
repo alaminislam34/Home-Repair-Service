@@ -15,12 +15,15 @@ const AppointmentLetter = () => {
   }, []);
   return (
     <div>
-      <h1>Appointment {appoint.length}</h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold my-4 px-4">
+        Appointment Letter {appoint.length}
+      </h1>
       <div className="overflow-x-auto mx-2">
-        <table className="table">
+        <table className="table rounded-xl overflow-hidden">
           {/* head */}
-          <thead className="bg-blue-500">
-            <tr>
+          <thead className="bg-blue-400">
+            <tr className="text-black font-normal text-base">
+              <th>#</th>
               <th>Name</th>
               <th>Date</th>
               <th>Confirm</th>
@@ -29,6 +32,7 @@ const AppointmentLetter = () => {
           <tbody>
             {appoint.map((a, i) => (
               <tr key={a._id} className="bg-base-200">
+                <td>{i + 1}</td>
                 <td>
                   {a.name}
                   <span className="text-xs md:text-sm">{a.email}</span>

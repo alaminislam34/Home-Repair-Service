@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
-import ServiceTodoTable from "../../Components/ServiceTodoTable";
+import ServiceTodoTable from "./ServiceTodoTable";
+import Aos from "aos";
+// import ServiceTodoTable from "../../Components/ServiceTodoTable";
 
 const ServiceToDo = () => {
   const { user } = useContext(AuthContext);
@@ -25,18 +27,37 @@ const ServiceToDo = () => {
         setLoading(false);
       });
   }, [user]);
+
+  useEffect(() => {
+    Aos.init({
+      offset: 200,
+      once: true,
+    });
+    Aos.refresh();
+  }, [bookedService]);
   return (
     <div>
       <div className="w-full h-full flex justify-center items-center my-4 md:my-6">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center">
+        <h2
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold py-2 inline text-center"
+        >
           Service To Do
         </h2>
       </div>
 
       {loading ? (
-        <loading />
+        <div className="flex justify-center items-center my-5">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
       ) : (
-        <div>
+        <div
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+        >
           {bookedService.length > 0 ? (
             <ServiceTodoTable service={{ bookedService }} />
           ) : (

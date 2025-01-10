@@ -67,7 +67,13 @@ const Testimonial = () => {
         }
       />
       {clients.length > 0 ? (
-        <section ref={sliderRef} className="keen-slider py-4">
+        <section
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1200"
+          ref={sliderRef}
+          className="keen-slider py-4"
+        >
           {clients.map((client, index) => (
             <div
               key={index}

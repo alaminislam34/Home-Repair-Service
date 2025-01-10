@@ -9,10 +9,6 @@ const BookedServiceTable = ({ service }) => {
 
   return (
     <div className="md:w-11/12 md:mx-auto my-6">
-      <h2 className="text-2xl font-semibold text-center mb-6">
-        Your Booked Services
-      </h2>
-
       {booked.length === 0 ? (
         <div className="text-center py-8">
           <p className="text-gray-600 text-xl">

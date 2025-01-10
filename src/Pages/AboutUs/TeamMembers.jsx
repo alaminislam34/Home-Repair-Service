@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import member1 from "../assets/team/m1.jpg";
-import member2 from "../assets/team/m2.jpg";
-import member3 from "../assets/team/m3.jpg";
-import member4 from "../assets/team/m4.jpg";
-import { AuthContext } from "../AuthContext/AuthProvider";
+import member1 from "../../assets/team/m1.jpg";
+import member2 from "../../assets/team/m2.jpg";
+import member3 from "../../assets/team/m3.jpg";
+import member4 from "../../assets/team/m4.jpg";
+import { AuthContext } from "../../AuthContext/AuthProvider";
 import {
   FaFacebook,
   FaInstagram,
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
-import SectionTitle from "./SectionTitle/SectionTitle";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const TeamMembers = () => {
   const { theme } = useContext(AuthContext);
@@ -23,9 +23,10 @@ const TeamMembers = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mx-4">
         <div
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          data-aos-delay="600"
+          data-aos-delay="200"
           className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden flex justify-center items-center px-4 pt-4"
         >
           <img src={member1} className="bg-center object-cover pt-4 px-4" />
@@ -52,9 +53,10 @@ const TeamMembers = () => {
           </div>
         </div>
         <div
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          data-aos-delay="800"
+          data-aos-delay="400"
           className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member2} className="bg-center object-cover pt-4 px-4" />
@@ -78,9 +80,10 @@ const TeamMembers = () => {
           </div>
         </div>
         <div
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          data-aos-delay="1000"
+          data-aos-delay="600"
           className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member3} className="bg-center object-cover pt-4 px-4" />
@@ -102,9 +105,10 @@ const TeamMembers = () => {
           </div>
         </div>
         <div
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          data-aos-delay="1200"
+          data-aos-delay="800"
           className="bg-base-100 rounded-lg relative shadow-xl group overflow-hidden  flex justify-center items-center px-4 pt-4"
         >
           <img src={member4} className="bg-center object-cover pt-4 px-4" />
