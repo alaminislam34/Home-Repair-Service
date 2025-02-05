@@ -57,6 +57,9 @@ const Services = () => {
 
         <div className="w-10/12 mx-auto py-4">
           <form
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            data-aos-duration="1200"
             onSubmit={handleSearch}
             className="flex flex-row justify-center items-center border-b-2 border-base-300 p-4 rounded-lg"
           >
@@ -128,6 +131,7 @@ const Services = () => {
                       className="w-10 h-10 rounded-full hover:scale-105 hover:-rotate-3 duration-300  object-cover border-2 border-blue-500"
                       src={service?.provider.photoURL}
                       alt="Provider"
+                      referrerPolicy="no-referrer"
                     />
                     <h4 className="text-sm font-medium">
                       {service?.provider.name}

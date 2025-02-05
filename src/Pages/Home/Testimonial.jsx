@@ -82,9 +82,10 @@ const Testimonial = () => {
               } rounded-xl shadow-xl hover:shadow-2xl text-center flex flex-col justify-center items-center p-4 space-y-3`}
             >
               <img
-                className="w-20 h-20 rounded-full border-2 border-blue-500"
+                className="w-20 h-20 rounded-full border-2 border-blue-500 object-cover bg-cover bg-center"
                 src={client.img}
-                alt=""
+                alt="client"
+                referrerPolicy="no-referrer"
               />
               <Rating
                 style={{ maxWidth: 180 }}

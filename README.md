@@ -1,53 +1,100 @@
-# Home Service
+# 🏠 RepairMate - Home Service Platform
 
-## RepairMate
+🚀 **Live Link:** [RepairMate](https://homerepairservicesbd.web.app/)
 
-live link : https://homerepairservicesbd.web.app/
+RepairMate is an online home repair service platform where users can easily book services. Additionally, service providers can act as admins, allowing them to post, manage, and provide their own services. However, users cannot purchase services they have posted themselves, ensuring a fair marketplace.
 
-The home repair service website is a platform where users can easily purchase home services. Additionally, anyone can act as an admin to post their own services and provide them, while also being able to avail other services. However, users cannot purchase the services they have posted themselves.
+---
 
-## Used Technology
+## 📌 **Key Features**
 
-This project is used by the following Technology:
+### ✅ **Fully Responsive Design**
 
-- HTML and CSS
-- JavaScript
-- React
-- Tailwind CSS
-- Node js
-- Express js
-- MongoDB
-- Firebase
+- Optimized for all devices, ensuring a seamless user experience across desktops, tablets, and mobile phones.
 
-## Key Features
+### ✅ **Add and Manage Services**
 
-#### ✅ Fully Responsive Design:
+- Users can add their own services and update/delete them as needed.
 
-The platform will be optimized for all devices, ensuring a seamless user experience across desktops, tablets, and mobile phones.
+### ✅ **Detailed Service Information**
 
-#### ✅ Add Service:
+- Users can view complete details about any service before making a purchase.
 
-Users can add own service of their choice.
+### ✅ **Secure Authentication**
 
-#### ✅ View Movie Details:
+- Firebase authentication ensures a secure login/signup experience.
 
-Users can access any service details and more service information for a more personalized experience.
+---
 
-#### ✅ Service Update and Delete:
+## 🛠 **Technologies Used**
 
-Users can add any service . Additionally, they can update the service they have added.
+This project is built using the following technologies:
 
-- etc..
+- **Frontend:** HTML, CSS, JavaScript, React, Tailwind CSS
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** Firebase
+- **Hosting & Deployment:** Firebase, Vercel
 
-#### ✅ Manage Service :
+---
 
-Users will have the ability to update or delete the services they have added if they wish.
+## 📦 **NPM Packages Used**
 
-## NPM package:
+```bash
+1. React Router Dom
+2. React Icons
+3. React Toastify
+4. React Hook Form
+5. React Select
+6. SweetAlert2
+```
 
-        1. React Router Dom
-        2. React Icons
-        3. React toastify
-        5. React Hook Form
-        6. React Select
-        7. SweetAlert2
+---
+
+## 🔑 **Environment Variables Setup**
+
+Before running this project, create a `.env.local` file in the root directory and add the following values:
+
+```bash
+VITE_API_KEY=your_firebase_api_key_here
+VITE_AUTH_DOMAIN=your_firebase_auth_domain_here
+VITE_PROJECT_ID=your_firebase_project_id_here
+VITE_STORAGE_BUCKET=your_firebase_storage_bucket_here
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+VITE_APP_ID=your_firebase_app_id_here
+VITE_URL=your_backend_api_url_here
+```
+
+🚨 **Warning:** Do NOT share your `.env` file in public repositories for security reasons.
+
+---
+
+## 🚀 **Getting Started**
+
+### **1️⃣ Clone the Repository**
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+### **2️⃣ Install Dependencies**
+
+```bash
+npm install
+```
+
+### **3️⃣ Start the Development Server**
+
+```bash
+npm run dev
+```
+
+---
+
+## 📞 **Contact & Support**
+
+If you have any issues or suggestions, feel free to reach out:  
+📧 **Email:** mi3548514@gmail.com  
+🔗 **LinkedIn:** [Al Amin ](https://www.linkedin.com/in/alamin34/)
+
+🌟 **Give this project a star if you find it useful!** ⭐
