@@ -75,7 +75,7 @@ const Services = () => {
             </div>
             <div className="">
               <input
-                className="border hover:scale-105 duration-500 overflow-hidden hover:shadow-xl border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4 "
+                className="border duration-500 overflow-hidden border-base-300 cursor-pointer bg-blue-400 text-white rounded-r-lg py-1.5 px-3 md:py-2 md:px-4 "
                 type="submit"
                 value="Search"
               />
@@ -143,7 +143,7 @@ const Services = () => {
                       setId(service._id);
                       navigate(`/serviceDetails/${service._id}`);
                     }}
-                    className="mt-4 px-4 py-2 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
+                    className="mt-4 px-4 py-2 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white text-sm rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-3 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)]"
                   >
                     View Details
                   </button>

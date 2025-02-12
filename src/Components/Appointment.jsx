@@ -32,6 +32,9 @@ const Appointment = () => {
   return (
     <div className="flex justify-center items-center min-h-[400px] my-6 mx-4">
       <div
+        data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-duration="1200"
         className={`w-full max-w-4xl ${
           theme === "light"
             ? "shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]"
@@ -39,8 +42,18 @@ const Appointment = () => {
         } rounded-3xl p-8`}
       >
         <div className="text-center mb-8 space-y-2 md:space-y-4">
-          <h2 className="text-3xl font-bold">FREE APPOINTMENT</h2>
-          <p className="text-gray-500 text-sm md:text-base">
+          <h2
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            className="text-3xl font-bold"
+          >
+            FREE APPOINTMENT
+          </h2>
+          <p
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
+            className="text-gray-500 text-sm md:text-base"
+          >
             Schedule your free appointment today for expert services. Connect
             with our team to address your needs with professionalism and care!
           </p>
@@ -50,6 +63,8 @@ const Appointment = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <input
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             required
             type="text"
             name="name"
@@ -57,6 +72,8 @@ const Appointment = () => {
             className="input input-bordered bg-transparent w-full focus:ring-2 focus:ring-blue-400"
           />
           <input
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             required
             type="date"
             name="date"
@@ -64,6 +81,8 @@ const Appointment = () => {
             className="input input-bordered bg-transparent w-full focus:ring-2 focus:ring-blue-400"
           />
           <input
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             required
             type="text"
             name="phone"
@@ -72,6 +91,8 @@ const Appointment = () => {
           />
 
           <textarea
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             required
             name="message"
             placeholder="MESSAGE"
@@ -79,6 +100,8 @@ const Appointment = () => {
             rows="4"
           ></textarea>
           <button
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             type="submit"
             className=" md:col-span-2 btn my-2 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500 text-white duration-500 hover:scale-105 "
           >
