@@ -108,7 +108,7 @@ const ServiceDetails = () => {
             <p className="text-gray-600 text-justify leading-relaxed">
               {provider?.service.description}
             </p>
-            <p className="text-2xl font-extrabold text-green-600">
+            <p className="text-lg md:text-xl font-bold text-green-600">
               {provider?.service.servicePrice} ৳
             </p>
           </div>

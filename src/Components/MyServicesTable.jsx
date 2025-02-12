@@ -117,65 +117,68 @@ const MyServicesCard = ({ service }) => {
             initial="hidden"
             animate="visible"
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            className="grid gap-4 md:gap-6 lg:gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 py-4 md:py-6"
+            className="py-4 md:py-6"
           >
-            {myServices?.map((s, index) => (
-              <motion.div
-                key={s._id}
-                custom={index}
-                variants={cardVariants}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                }}
-                className={`rounded-xl ${
-                  theme === "light"
-                    ? "bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200"
-                    : "bg-gradient-to-br from-gray-800 via-gray-900 to-black"
-                } shadow-md transition-all duration-300`}
-              >
-                <div className="h-40 overflow-hidden rounded-t-lg">
-                  <img
-                    src={s?.provider.service.serviceImgURL}
-                    alt="service"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold">
-                    {s?.provider.service.serviceName}
-                  </h3>
-                  <p className="text-sm text-gray-500">
-                    {s?.provider.service.serviceArea}
-                  </p>
-                  <p className="mt-2 text-sm text-gray-600">
-                    {s?.provider.service.description.slice(0, 30)}...
-                  </p>
-                  <p className="mt-2 text-lg font-semibold text-green-600">
-                    {s?.provider.service.servicePrice} ৳
-                  </p>
-                  <div className="mt-4 flex justify-between items-center">
-                    <button
-                      onClick={() => {
-                        document.getElementById("my_modal_5").showModal();
-                        setId(s?._id);
-                      }}
-                      className="px-3 py-2 text-sm border-gray-300 bg-gradient-to-l from-blue-400 via-blue-400 to-blue-500 text-white font-semibold rounded hover:rounded-2xl shadow-lg hover:scale-105 hover:-rotate-6 duration-500 hover:shadow-[_2px_2px_10px_rgb(0,0,0,0.5)] flex items-center justify-center gap-2"
-                    >
-                      Edit
-                      <FaPen />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteService(s?._id)}
-                      data-tip="Delete"
-                      className="btn btn-outline btn-xs text-red-500 border-none bg-base-100 hover:bg-gradient-to-t from-red-400 to-red-500 tooltip tooltip-top"
-                    >
-                      X
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <table className="w-full border-collapse border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border border-gray-300 px-4 py-2">Image</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Service Name
+                  </th>
+                  <th className="border border-gray-300 px-4 py-2">Area</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Description
+                  </th>
+                  <th className="border border-gray-300 px-4 py-2">Price</th>
+                  <th className="border border-gray-300 px-4 py-2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myServices?.map((s, index) => (
+                  <tr key={s._id} className="hover:bg-gray-200">
+                    <td className="border border-gray-300 px-4 py-2">
+                      <img
+                        src={s?.provider.service.serviceImgURL}
+                        alt="service"
+                        className="h-16 w-16 object-cover rounded"
+                      />
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {s?.provider.service.serviceName}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {s?.provider.service.serviceArea}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {s?.provider.service.description.slice(0, 30)}...
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2 text-green-600 font-semibold">
+                      {s?.provider.service.servicePrice} ৳
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            document.getElementById("my_modal_5").showModal();
+                            setId(s?._id);
+                          }}
+                          className="px-3 py-1 text-sm border-gray-300 bg-blue-500 text-white font-semibold rounded hover:scale-105 duration-300 flex items-center gap-2"
+                        >
+                          Edit <FaPen />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteService(s?._id)}
+                          className="px-3 py-1 text-sm border-none bg-red-500 text-white font-semibold rounded hover:scale-105 duration-300"
+                        >
+                          X
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </motion.div>
 
           {/* Open the modal using document.getElementById('ID').showModal() method */}

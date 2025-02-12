@@ -43,10 +43,7 @@ const BookedServiceTable = ({ service }) => {
                     <div className="avatar">
                       <div className="rounded-full w-12 h-12">
                         <img
-                          src={
-                            book?.serviceImg ||
-                            "https://via.placeholder.com/150"
-                          }
+                          src={book?.serviceImg}
                           alt="Service"
                           className="object-cover"
                         />
