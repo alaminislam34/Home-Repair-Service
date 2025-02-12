@@ -226,7 +226,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <div>
             {/* theme toggle icons */}
-            <button className="text-lg flex items-center justify-center m-2 hover:bg-base-300 rounded-lg">
+            <button className="text-lg flex items-center justify-center rounded-lg px-4">
               {theme === "light" ? (
                 <MdDarkMode
                   className="w-full h-full"

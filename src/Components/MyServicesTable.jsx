@@ -117,11 +117,11 @@ const MyServicesCard = ({ service }) => {
             initial="hidden"
             animate="visible"
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            className="py-4 md:py-6"
+            className="py-4 md:py-6 overflow-x-auto"
           >
-            <table className="w-full border-collapse border border-gray-300">
+            <table className="w-full border-collapse table border border-gray-300">
               <thead>
-                <tr className="bg-gray-100">
+                <tr className="bg-gray-500 text-white">
                   <th className="border border-gray-300 px-4 py-2">Image</th>
                   <th className="border border-gray-300 px-4 py-2">
                     Service Name
@@ -136,7 +136,7 @@ const MyServicesCard = ({ service }) => {
               </thead>
               <tbody>
                 {myServices?.map((s, index) => (
-                  <tr key={s._id} className="hover:bg-gray-200">
+                  <tr key={s._id} className="*:truncate">
                     <td className="border border-gray-300 px-4 py-2">
                       <img
                         src={s?.provider.service.serviceImgURL}
