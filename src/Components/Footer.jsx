@@ -1,5 +1,6 @@
 import {
   FaFacebook,
+  FaGithub,
   FaInstagram,
   FaPinterest,
   FaTwitter,
@@ -101,10 +102,12 @@ const Footer = () => {
           © RepairMade 2024 Made With by Al Amin
         </p>
         <p className="flex flex-row gap-4 items-center">
-          <FaFacebook />
-          <FaInstagram />
-          <FaTwitter />
-          <FaPinterest />
+          <a href="https://www.facebook.com/ar.alamin34" target="_blank">
+            <FaFacebook />
+          </a>
+          <a href="https://github.com/alaminislam34" target="_blank">
+            <FaGithub />
+          </a>
         </p>
       </div>
     </div>
