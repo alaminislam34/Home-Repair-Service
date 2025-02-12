@@ -9,17 +9,13 @@ import "../../src/index.css";
 import { IoMdLogOut } from "react-icons/io";
 import Aos from "aos";
 const Navbar = () => {
-  const { user, handleLogout, id, setTheme, theme } = useContext(AuthContext);
+  const { user, handleLogout, id, theme, setTheme } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [light, setLight] = useState(true);
   const location = useLocation();
   const [isSticky, setIsSticky] = useState(false);
   const navigate = useNavigate();
 
   // handle page theme mode
-  const handleTheme = () => {
-    setLight(!light);
-  };
 
   // set page title
   useEffect(() => {
@@ -230,15 +226,13 @@ const Navbar = () => {
         <div className="navbar-end">
           <div>
             {/* theme toggle icons */}
-            <button
-              onClick={handleTheme}
-              className="text-lg flex items-center justify-center m-2 hover:bg-base-300 rounded-lg"
-            >
-              {light ? (
+            <button className="text-lg flex items-center justify-center m-2 hover:bg-base-300 rounded-lg">
+              {theme === "light" ? (
                 <MdDarkMode
                   className="w-full h-full"
                   onClick={() => {
                     setTheme("dark");
+                    localStorage.setItem("theme", "dark");
                   }}
                 />
               ) : (
@@ -246,6 +240,7 @@ const Navbar = () => {
                   className="w-full h-full"
                   onClick={() => {
                     setTheme("light");
+                    localStorage.setItem("theme", "light");
                   }}
                 />
               )}

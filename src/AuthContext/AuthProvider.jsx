@@ -13,7 +13,9 @@ const AuthProvider = ({ children }) => {
   const [services, setServices] = useState([]);
   const [error, setError] = useState(null);
   const [id, setId] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
   // on auth state change handle
   useEffect(() => {
