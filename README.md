@@ -1,100 +1,101 @@
-# 🏠 RepairMate - Home Service Platform
+# 🛠️ Home Repair Service
 
-🚀 **Live Link:** [RepairMate](https://homerepairservicesbd.web.app/)
+A **home repair service** website that connects users with professional repair services. Built with **React, Vite, Firebase, and Tailwind CSS**, this project ensures a seamless user experience with smooth UI animations, authentication, and efficient data fetching.
 
-RepairMate is an online home repair service platform where users can easily book services. Additionally, service providers can act as admins, allowing them to post, manage, and provide their own services. However, users cannot purchase services they have posted themselves, ensuring a fair marketplace.
+[Live Demo](https://homerepairbd.netlify.app/)
 
----
+## 📌 Table of Contents
 
-## 📌 **Key Features**
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Technologies Used](#technologies-used)
+- [Scripts](#scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
-### ✅ **Fully Responsive Design**
+## ✨ Features
 
-- Optimized for all devices, ensuring a seamless user experience across desktops, tablets, and mobile phones.
+✅ **User Authentication** (Firebase)  
+✅ **Service Listings & Reviews**  
+✅ **Responsive & Modern UI** (Tailwind CSS, DaisyUI, Bootstrap)  
+✅ **Smooth Animations** (AOS, Motion)  
+✅ **Optimized Routing** (React Router)  
+✅ **Data Fetching & Caching** (React Query, Axios)  
+✅ **Interactive UI Elements** (Keen Slider, Swiper, React Spinners)
 
-### ✅ **Add and Manage Services**
+## 📥 Installation
 
-- Users can add their own services and update/delete them as needed.
+1️⃣ **Clone the repository:**
 
-### ✅ **Detailed Service Information**
-
-- Users can view complete details about any service before making a purchase.
-
-### ✅ **Secure Authentication**
-
-- Firebase authentication ensures a secure login/signup experience.
-
----
-
-## 🛠 **Technologies Used**
-
-This project is built using the following technologies:
-
-- **Frontend:** HTML, CSS, JavaScript, React, Tailwind CSS
-- **Backend:** Node.js, Express.js, MongoDB
-- **Authentication:** Firebase
-- **Hosting & Deployment:** Firebase, Vercel
-
----
-
-## 📦 **NPM Packages Used**
-
-```bash
-1. React Router Dom
-2. React Icons
-3. React Toastify
-4. React Hook Form
-5. React Select
-6. SweetAlert2
+```sh
+git clone https://github.com/yourusername/home-repair-service.git
+cd home-repair-service
 ```
 
----
+2️⃣ **Install dependencies:**
 
-## 🔑 **Environment Variables Setup**
-
-Before running this project, create a `.env.local` file in the root directory and add the following values:
-
-```bash
-VITE_API_KEY=your_firebase_api_key_here
-VITE_AUTH_DOMAIN=your_firebase_auth_domain_here
-VITE_PROJECT_ID=your_firebase_project_id_here
-VITE_STORAGE_BUCKET=your_firebase_storage_bucket_here
-VITE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
-VITE_APP_ID=your_firebase_app_id_here
-VITE_URL=your_backend_api_url_here
-```
-
-🚨 **Warning:** Do NOT share your `.env` file in public repositories for security reasons.
-
----
-
-## 🚀 **Getting Started**
-
-### **1️⃣ Clone the Repository**
-
-```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-```
-
-### **2️⃣ Install Dependencies**
-
-```bash
+```sh
 npm install
 ```
 
-### **3️⃣ Start the Development Server**
+3️⃣ **Start the development server:**
 
-```bash
+```sh
 npm run dev
 ```
 
----
+## 🚀 Usage
 
-## 📞 **Contact & Support**
+- Visit `http://localhost:5173/` in your browser after running the dev server.
+- Users can sign in, browse repair services, and request assistance.
+- Admins can manage service listings and user reviews.
 
-If you have any issues or suggestions, feel free to reach out:  
-📧 **Email:** mi3548514@gmail.com  
-🔗 **LinkedIn:** [Al Amin ](https://www.linkedin.com/in/alamin34/)
+## 🔑 Environment Variables
 
-🌟 **Give this project a star if you find it useful!** ⭐
+Create a `.env` file in the root directory and add:
+
+```
+VITE_apiKey=your-api-key
+VITE_authDomain=your-auth-domain
+VITE_projectId=your-project-id
+VITE_storageBucket=your-storage-bucket
+VITE_messagingSenderId=your-messaging-sender-id
+VITE_appId=your-app-id
+VITE_URL=https://home-repair-service-server-pi.vercel.app
+```
+
+Replace the placeholders with your actual Firebase credentials.
+
+## 🛠️ Technologies Used
+
+- **Frontend:** React, React Router, Tailwind CSS, Bootstrap, DaisyUI
+- **State Management & Data Fetching:** React Query, Axios
+- **Animations & UI Enhancements:** Motion, AOS, Keen Slider, Swiper
+- **Authentication & Backend Services:** Firebase
+- **Linting & Formatting:** ESLint, Prettier
+- **Build Tool:** Vite
+
+## 📜 Scripts
+
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Start the development server (Vite) |
+| `npm run build`   | Build the project for production    |
+| `npm run preview` | Preview the production build        |
+| `npm run lint`    | Run ESLint for code quality         |
+
+## 🤝 Contributing
+
+Contributions are welcome! Follow these steps:
+
+1. **Fork** the repository.
+2. **Create** a new branch: `git checkout -b feature-branch`
+3. **Commit** your changes: `git commit -m "Add feature"`
+4. **Push** to your branch: `git push origin feature-branch`
+5. **Create a Pull Request** 🚀
+
+## 📄 License
+
+This project is **private** and not open-source. Contact the owner for details.
