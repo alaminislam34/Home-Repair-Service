@@ -79,7 +79,7 @@ const Testimonial = () => {
               key={index}
               className={`keen-slider__slide number-slide${
                 index + 1
-              } rounded-xl shadow-xl hover:shadow-2xl text-center flex flex-col justify-center items-center p-4 space-y-3`}
+              } rounded-xl border text-center flex flex-col hover:cursor-pointer justify-center items-center p-4 space-y-3`}
             >
               <img
                 className="w-20 h-20 rounded-full border-2 border-blue-500 object-cover bg-cover bg-center"
@@ -88,7 +88,7 @@ const Testimonial = () => {
                 referrerPolicy="no-referrer"
               />
               <Rating
-                style={{ maxWidth: 180 }}
+                style={{ maxWidth: 120 }}
                 value={client.rating}
                 readOnly
               />
