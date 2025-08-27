@@ -15,14 +15,14 @@ const OurServices = () => {
           "Our home repair services include plumbing, carpentry, electrical fixes, painting, and maintenance, ensuring quality solutions for every household need."
         }
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-center my-8 md:my-12 mx-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 my-8 md:my-12 mx-4">
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:shadow-2xl transition-all ease-in-out duration-500 rounded-xl p-6 group border"
         >
-          <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
+          <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600 duration-300">
             <GiPaintBucket className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
           </div>
           <div className="text-center">
@@ -39,7 +39,7 @@ const OurServices = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl transition-transform ease-in-out duration-500 rounded-xl p-6 group border"
         >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <PiPipeFill className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
@@ -58,7 +58,7 @@ const OurServices = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl transition-transform ease-in-out duration-500 rounded-xl p-6 group border"
         >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <BsDoorOpen className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
@@ -76,7 +76,7 @@ const OurServices = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl transition-transform ease-in-out duration-500 rounded-xl p-6 group border"
         >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <MdOutlineElectricalServices className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
@@ -95,7 +95,7 @@ const OurServices = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl transition-transform ease-in-out duration-500 rounded-xl p-6 group border"
         >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <RiSofaLine className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />
@@ -114,7 +114,7 @@ const OurServices = () => {
           data-aos="fade-up"
           data-aos-anchor-placement="center-bottom"
           data-aos-duration="1200"
-          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl duration-500 rounded-xl p-6 group"
+          className="flex justify-center items-center flex-col hover:scale-105 hover:shadow-2xl transition-transform ease-in-out duration-500 rounded-xl p-6 group border"
         >
           <div className="text-4xl border-4 w-28 h-28 rounded-full p-2 group-hover:border-blue-600">
             <LuChefHat className="bg-base-300 rounded-full w-full h-full p-4 group-hover:bg-blue-500 group-hover:text-white" />

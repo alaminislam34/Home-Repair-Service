@@ -174,7 +174,7 @@ const Navbar = () => {
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
         data-aos-duration="1200"
-        className={`navbar max-w-7xl mx-auto py-4 px-4`}
+        className={`navbar max-w-[1440px] mx-auto py-4 px-4`}
       >
         <div className="navbar-start">
           <div className="dropdown">

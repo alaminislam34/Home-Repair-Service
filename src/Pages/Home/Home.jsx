@@ -27,7 +27,7 @@ const Home = () => {
     <div className="mb-12 md:mb-20">
       {/* Banner section */}
       <div className="w-full relative">
-        <div className="h-[70vh]">
+        <div className="h-[500px]">
           <img
             className="w-full h-full object-cover bg-center bg-no-repeat"
             src={banner1}
